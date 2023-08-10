@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JDesktopPane;
 
 public class iniciar extends JFrame {
 
@@ -55,10 +56,11 @@ public class iniciar extends JFrame {
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setEnabled(false);
 		splitPane.setForeground(new Color(242, 234, 225));
-		splitPane.setResizeWeight(0.2);
+		splitPane.setResizeWeight(0.15);
 		panel.add(splitPane, BorderLayout.CENTER);
 		
 		JPanel sidebar = new JPanel();
+		sidebar.setForeground(new Color(242, 234, 225));
 		sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
 		sidebar.setBackground(new Color(242, 234, 225));
 		splitPane.setLeftComponent(sidebar);
@@ -76,17 +78,21 @@ public class iniciar extends JFrame {
 		lbllogo.setLabelFor(this);
 		lbllogo.setIcon(new ImageIcon(iniciar.class.getResource("/img/Mi proyecto.png")));
 		
-		JPanel sidebarInt2 = new JPanel();
-		sidebarInt2.setLayout(new BoxLayout(sidebarInt2, BoxLayout.Y_AXIS));
-		sidebar.add(sidebarInt2);
+		JPanel panelNombre = new JPanel();
+		panelNombre.setBackground(new Color(242, 234, 225));
+		sidebar.add(panelNombre);
 		
 		JLabel lblNombre = new JLabel("Megan Fox");
-		sidebarInt2.add(lblNombre);
 		lblNombre.setFont(new Font("Nirmala UI", Font.BOLD, 14));
+		panelNombre.add(lblNombre);
+		
+		JPanel panelCargo = new JPanel();
+		panelCargo.setBackground(new Color(242, 234, 225));
+		sidebar.add(panelCargo);
 		
 		JLabel lblCargo = new JLabel("Administrador");
-		sidebarInt2.add(lblCargo);
 		lblCargo.setFont(new Font("Nirmala UI", Font.BOLD, 14));
+		panelCargo.add(lblCargo);
 		
 		JPanel panel1 = new JPanel();
 		sidebar.add(panel1);
@@ -166,8 +172,9 @@ public class iniciar extends JFrame {
 		btnCerrar.setBorderPainted(false); 
 		panel8.add(btnCerrar);
 		
-		JPanel panel_2 = new JPanel();
-		splitPane.setRightComponent(panel_2);
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(255, 255, 255));
+		splitPane.setRightComponent(desktopPane);
 	}
 	
 	
