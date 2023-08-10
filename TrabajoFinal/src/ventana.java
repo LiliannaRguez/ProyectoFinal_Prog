@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 
+
 public class ventana {
 
 	public static void main(String[] args) {

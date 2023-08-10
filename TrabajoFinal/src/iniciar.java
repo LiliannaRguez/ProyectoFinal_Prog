@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JInternalFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -17,30 +16,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 
+
 public class iniciar extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					iniciar frame = new iniciar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public iniciar() {
+		JDesktopPane desktopPane = new JDesktopPane();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 972, 680);
 		contentPane = new JPanel();
@@ -172,7 +155,7 @@ public class iniciar extends JFrame {
 		btnCerrar.setBorderPainted(false); 
 		panel8.add(btnCerrar);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
+		
 		desktopPane.setBackground(new Color(255, 255, 255));
 		splitPane.setRightComponent(desktopPane);
 	}
