@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 
+import conexion.mysqlConexion;
 
 public class iniciar extends JFrame {
 
@@ -23,7 +24,7 @@ public class iniciar extends JFrame {
 
 	public iniciar() {
 		JDesktopPane desktopPane = new JDesktopPane();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 972, 680);
 		contentPane = new JPanel();
@@ -37,9 +38,9 @@ public class iniciar extends JFrame {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JSplitPane splitPane = new JSplitPane();
+		splitPane.setResizeWeight(0.05);
 		splitPane.setEnabled(false);
 		splitPane.setForeground(new Color(242, 234, 225));
-		splitPane.setResizeWeight(0.15);
 		panel.add(splitPane, BorderLayout.CENTER);
 		
 		JPanel sidebar = new JPanel();
@@ -168,7 +169,6 @@ public class iniciar extends JFrame {
 		btnCerrar.setBackground(new Color(242, 234, 225));
 		btnCerrar.setBorderPainted(false); 
 		panel8.add(btnCerrar);
-		
 		
 		desktopPane.setBackground(new Color(255, 255, 255));
 		splitPane.setRightComponent(desktopPane);
