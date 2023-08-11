@@ -12,10 +12,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 
 
 @SuppressWarnings("serial")
@@ -23,7 +22,10 @@ public class iniciar extends JFrame {
 
 	private JPanel contentPane;
 
+
 	public iniciar() {
+		
+	
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1551, 830);
@@ -162,8 +164,6 @@ public class iniciar extends JFrame {
 		desktopPane.setBackground(new Color(255, 255, 255));
 		splitPane.setRightComponent(desktopPane);
 		
-		
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(0, 0, 1061, 781);
@@ -201,9 +201,10 @@ public class iniciar extends JFrame {
 		desktopPane.add(panel_7);
 		
 		
-		btnInicio.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 				panel_1.setVisible(true);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
@@ -222,9 +223,9 @@ public class iniciar extends JFrame {
 			}
 		});
 		
-		btnProducto.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 			panel_2.setVisible(true);
 			panel_1.setVisible(false);
 			panel_3.setVisible(false);
@@ -244,9 +245,8 @@ public class iniciar extends JFrame {
 		});
 	
 		
-		btnVentas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				panel_3.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -269,9 +269,8 @@ public class iniciar extends JFrame {
 		});
 		
 		
-		btnInventario.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnInventario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				panel_4.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -287,12 +286,15 @@ public class iniciar extends JFrame {
 				btnContabilidad.setBackground((new Color(242, 234, 225)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
+				
+				Inventario nuevoinventario = new Inventario();
+				nuevoinventario.setVisible(true);
+				panel_4.add(nuevoinventario); 
 			}
 		});
 		
-		btnContabilidad.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnContabilidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				panel_5.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -311,9 +313,8 @@ public class iniciar extends JFrame {
 			}
 		});
 		
-		btnEmpleados.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnEmpleados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				panel_6.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -329,15 +330,17 @@ public class iniciar extends JFrame {
 				btnInventario.setBackground((new Color(242, 234, 225)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
+				
 				VentanaEmpleados nuevoEmpleado = new VentanaEmpleados();
 				nuevoEmpleado.setVisible(true);
 				panel_6.add(nuevoEmpleado);
+			
+				
 			}
 		});
 		
-		btnUsuarios.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				panel_7.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
@@ -353,16 +356,20 @@ public class iniciar extends JFrame {
 				btnInventario.setBackground((new Color(242, 234, 225)));
 				btnContabilidad.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
+				
 				VentanaUsuaio nuevoUsuario = new VentanaUsuaio();
 				nuevoUsuario.setVisible(true);
 				panel_7.add(nuevoUsuario);
 				//desktopPane.add(nuevoUsuario);
+				
+				
+				
 			}
 		});
 		
-		btnCerrar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 				//panel8.setVisible(true);
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);

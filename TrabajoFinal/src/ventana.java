@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import conexion.mysqlConexion;
+
 
 public class ventana {
 
@@ -9,6 +11,8 @@ public class ventana {
 		 ventana_principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		 ventana_principal.setVisible(true);
 		
+		 /*mysqlConexion objetoconexion = new mysqlConexion();
+			objetoconexion.estableceConexion();*/
 	}
 
 }

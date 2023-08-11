@@ -1,9 +1,7 @@
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -12,12 +10,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import java.awt.Font;
 import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
-public class VentanaUsuaio extends JFrame {
+public class VentanaUsuaio extends JDialog {
 	private JTextField textField1;
 	private JTextField textField2;
 	private JTextField textField3;
@@ -28,7 +25,7 @@ public class VentanaUsuaio extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,13 +36,15 @@ public class VentanaUsuaio extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaUsuaio() {
+		
 		setUndecorated(true);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(SystemColor.menu);
 		getContentPane().setEnabled(false);

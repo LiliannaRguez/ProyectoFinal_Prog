@@ -1,13 +1,9 @@
-import java.awt.EventQueue;
-
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -16,10 +12,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 
 
 @SuppressWarnings("serial")
-public class VentanaEmpleados extends JFrame {
+public class VentanaEmpleados extends JDialog {
 	private JTextField textField1;
 	private JTextField textField3;
 	private JTextField textField4;
@@ -34,7 +31,7 @@ public class VentanaEmpleados extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -45,13 +42,15 @@ public class VentanaEmpleados extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaEmpleados() {
+		
 		setUndecorated(true);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
 		setBounds(473, 28, 1064, 781);
@@ -211,7 +210,7 @@ public class VentanaEmpleados extends JFrame {
 		Label12.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Label12.setBounds(677, 61, 58, 13);
 		panel1.add(Label12);
-		
+		  
 		JButton Button2 = new JButton("Guardar Empleado");
 		Button2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button2.setForeground(Color.WHITE);
