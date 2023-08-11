@@ -106,6 +106,13 @@ public class iniciar extends JFrame {
 		panel3.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnEmpleados = new JButton("Empleados");
+		btnEmpleados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaEmpleados nuevoempleado = new VentanaEmpleados();
+				nuevoempleado.setVisible(true);
+				desktopPane.add(nuevoempleado);
+			}
+		});
 		btnEmpleados.setBackground(new Color(242, 234, 225));
 		btnEmpleados.setBorderPainted(false); 
 		panel3.add(btnEmpleados);
@@ -142,6 +149,13 @@ public class iniciar extends JFrame {
 		panel7.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnUsuarios = new JButton("Usuarios");
+		btnUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaUsuaio nuevoUsuario = new VentanaUsuaio();
+				nuevoUsuario.setVisible(true);
+				desktopPane.add(nuevoUsuario);
+			}
+		});
 		btnUsuarios.setBackground(new Color(242, 234, 225));
 		btnUsuarios.setBorderPainted(false); 
 		panel7.add(btnUsuarios);
