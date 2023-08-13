@@ -64,7 +64,7 @@ public class Inventario extends JDialog {
 	private void initialize() {
 		
 		setUndecorated(true);
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(new Color(0, 0, 0));
 		getContentPane().setEnabled(false);
