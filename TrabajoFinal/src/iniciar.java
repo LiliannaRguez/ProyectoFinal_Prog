@@ -151,8 +151,8 @@ public class iniciar extends JFrame {
 		JButton btnCerrar = new JButton("Cerrar Sesion");
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-						dispose(); 
-				  
+						//dispose(); 
+						System.exit(EXIT_ON_CLOSE);
 			}
 		});
 		
@@ -287,7 +287,7 @@ public class iniciar extends JFrame {
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
 				
-				Inventario nuevoinventario = new Inventario();
+				Producto nuevoinventario = new Producto();
 				nuevoinventario.setVisible(true);
 				panel_4.add(nuevoinventario); 
 			}
