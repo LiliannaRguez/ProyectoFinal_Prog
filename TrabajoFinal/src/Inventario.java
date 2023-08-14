@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.EventQueue;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.event.ActionListener;
@@ -37,7 +39,7 @@ public class Inventario extends JDialog {
 		});
 	}*/
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -48,7 +50,7 @@ public class Inventario extends JDialog {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the application.
@@ -64,7 +66,7 @@ public class Inventario extends JDialog {
 	private void initialize() {
 		
 		setUndecorated(true);
-		setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(new Color(0, 0, 0));
 		getContentPane().setEnabled(false);
