@@ -150,29 +150,22 @@ public class VentanaUsuaio extends JDialog {
 		Button2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button2.setForeground(Color.WHITE);
 		Button2.setBackground(new Color(255, 175, 0));
-		Button2.setBounds(105, 279, 165, 29);
+		Button2.setBounds(246, 279, 165, 29);
 		getContentPane().add(Button2);
 		
-		JButton Button3 = new JButton("Modificar Usuario");
+		JButton Button3 = new JButton("Eliminar Usuario");
 		Button3.setForeground(Color.WHITE);
 		Button3.setBackground(new Color(255, 175, 0));
 		Button3.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button3.setBounds(323, 279, 165, 29);
+		Button3.setBounds(462, 279, 165, 29);
 		getContentPane().add(Button3);
 		
 		JButton Button4 = new JButton("Editar Usuario");
 		Button4.setForeground(Color.WHITE);
 		Button4.setBackground(new Color(255, 175, 0));
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button4.setBounds(542, 279, 165, 29);
+		Button4.setBounds(673, 279, 165, 29);
 		getContentPane().add(Button4);
-		
-		JButton Button5 = new JButton("Añadir Usuario");
-		Button5.setForeground(Color.WHITE);
-		Button5.setBackground(new Color(255, 175, 0));
-		Button5.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button5.setBounds(754, 279, 165, 29);
-		getContentPane().add(Button5);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(25, 353, 1016, 396);

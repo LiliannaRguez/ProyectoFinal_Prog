@@ -8,11 +8,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
@@ -178,29 +175,22 @@ public class Producto extends JDialog {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBackground(new Color(255, 175, 0));
-		btnNewButton_1.setBounds(105, 290, 165, 29);
+		btnNewButton_1.setBounds(211, 290, 165, 29);
 		getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Modificar Producto");
+		JButton btnNewButton_2 = new JButton("Eliminar Producto");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(new Color(255, 175, 0));
-		btnNewButton_2.setBounds(324, 290, 165, 29);
+		btnNewButton_2.setBounds(445, 290, 165, 29);
 		getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Editar Producto");
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.setBackground(new Color(255, 175, 0));
-		btnNewButton_3.setBounds(542, 290, 165, 29);
+		btnNewButton_3.setBounds(673, 290, 165, 29);
 		getContentPane().add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("Añadir Producto");
-		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton_4.setForeground(Color.WHITE);
-		btnNewButton_4.setBackground(new Color(255, 175, 0));
-		btnNewButton_4.setBounds(754, 290, 165, 29);
-		getContentPane().add(btnNewButton_4);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(25, 353, 1016, 396);

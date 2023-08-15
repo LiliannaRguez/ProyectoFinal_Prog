@@ -1,38 +1,26 @@
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 @SuppressWarnings("serial")
 public class VentanaContabilidad extends JDialog {
 
-	private JTextField textField;
 	private JTextField textField1;
-	private JTextField textField3;
-	private JTextField textField4;
-	private JTextField textField5;
-	private JTextField textField6;
-	private JTextField textField7;
-	private JTable table;
-	private JTable table_1;
-	private JTable table_2;
+
 	
 
 	/**
@@ -138,7 +126,30 @@ public class VentanaContabilidad extends JDialog {
 		//panelPrincipal.add(panelContenedor2);
 		getContentPane().add(panelPrincipal);
 		
-		JPanel panelContenedor1 = new JPanel();
+		Button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaIngresos ingresos = new VentanaIngresos();
+				ingresos.setVisible(true);
+				panelPrincipal.add(ingresos);
+			}
+		});
+		
+		Button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCuentasPorCobrar cuentas = new VentanaCuentasPorCobrar();
+				cuentas.setVisible(true);
+				panelPrincipal.add(cuentas);
+			}
+		});
+		
+		Button10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCuadreCaja cuadre = new VentanaCuadreCaja();
+				cuadre.setVisible(true);
+				panelPrincipal.add(cuadre);
+			}
+		});
+		/*JPanel panelContenedor1 = new JPanel();
 		panelContenedor1.setBackground(SystemColor.window);
 		panelContenedor1.setBounds(25, 214, 1015, 530);
 		getContentPane().add(panelContenedor1);
@@ -219,9 +230,9 @@ public class VentanaContabilidad extends JDialog {
 		panelContenedor1.add(Button6);
 		Button6.setForeground(Color.WHITE);
 		Button6.setBackground(new Color(255, 175, 0));
-		Button6.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		Button6.setFont(new Font("Tahoma", Font.PLAIN, 13));*/
 		
-		JPanel panelContenedor2 = new JPanel();
+		/*JPanel panelContenedor2 = new JPanel();
 		panelContenedor2.setBackground(Color.WHITE);
 		panelContenedor2.setBounds(22, 214, 1019, 530);
 		getContentPane().add(panelContenedor2);
@@ -307,7 +318,7 @@ public class VentanaContabilidad extends JDialog {
 		panelContenedor3.setLayout(null);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(10, 40, 999, 300);
+		scrollPane_2.setBounds(10, 70, 999, 300);
 		panelContenedor3.add(scrollPane_2);
 		
 		table_2 = new JTable();
@@ -326,20 +337,24 @@ public class VentanaContabilidad extends JDialog {
 		Button11.setBounds(900, 490, 123, 30);
 		panelContenedor3.add(Button11);
 		
+		JLabel lblNewLabel = new JLabel("Ventas del Dia");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(37, 40, 193, 13);
+		panelContenedor3.add(lblNewLabel);*/
 		
-		Button2.addActionListener(new ActionListener() {
+		
+		/*Button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelPrincipal.setVisible(false);
 				panelContenedor1.setVisible(true);
 				panelContenedor2.setVisible(false);
 				panelContenedor3.setVisible(false);
-				/*Button2.setBackground((new Color(255, 175, 0)));
+				Button2.setBackground((new Color(255, 175, 0)));
 				Button3.setBackground((new Color(242, 234, 225)));
-				Button10.setBackground((new Color(242, 234, 225)));*/
+				Button10.setBackground((new Color(242, 234, 225)));
 			
 			}
-		});
-		
+			
 		
 		Button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -347,9 +362,9 @@ public class VentanaContabilidad extends JDialog {
 				panelContenedor2.setVisible(true);
 				panelContenedor1.setVisible(false);
 				panelContenedor3.setVisible(false);
-				/*Button3.setBackground((new Color(255, 175, 0)));
+				Button3.setBackground((new Color(255, 175, 0)));
 				Button2.setBackground((new Color(242, 234, 225)));
-				Button10.setBackground((new Color(242, 234, 225)));*/
+				Button10.setBackground((new Color(242, 234, 225)));
 				
 			}
 		});
@@ -360,11 +375,11 @@ public class VentanaContabilidad extends JDialog {
 				panelContenedor3.setVisible(true);
 				panelContenedor2.setVisible(false);
 				panelContenedor1.setVisible(false);
-				/*Button10.setBackground((new Color(255, 175, 0)));
+				Button10.setBackground((new Color(255, 175, 0)));
 				Button2.setBackground((new Color(242, 234, 225)));
-				Button3.setBackground((new Color(242, 234, 225)));*/
+				Button3.setBackground((new Color(242, 234, 225)));
 			}
-		});
+		});*/
 		
 		
 	}

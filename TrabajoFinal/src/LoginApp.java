@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 
 
 
+@SuppressWarnings("serial")
 public class LoginApp extends JFrame {
 
 	private JPanel contentPane;
@@ -35,7 +36,7 @@ public class LoginApp extends JFrame {
 	public LoginApp() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 985, 689);
+		setBounds(100, 100, 985, 694);
 		contentPane = new FondoPanel("fondo.jpg");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

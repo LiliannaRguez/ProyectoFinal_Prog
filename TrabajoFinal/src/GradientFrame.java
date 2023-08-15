@@ -1,17 +1,14 @@
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
+
+@SuppressWarnings("serial")
 public class GradientFrame extends JFrame {
     public GradientFrame() {
         setSize(400, 400);
@@ -24,6 +21,7 @@ public class GradientFrame extends JFrame {
     }
 }
 
+@SuppressWarnings("serial")
 class GradientPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {

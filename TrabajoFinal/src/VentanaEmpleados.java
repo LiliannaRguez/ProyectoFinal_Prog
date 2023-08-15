@@ -183,6 +183,7 @@ public class VentanaEmpleados extends JDialog {
 		Label10.setBounds(302, 102, 45, 13);
 		panel1.add(Label10);
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox comboBox1 = new JComboBox();
 		comboBox1.setBackground(SystemColor.controlHighlight);
 		comboBox1.setBounds(347, 99, 166, 21);
@@ -200,6 +201,7 @@ public class VentanaEmpleados extends JDialog {
 		panel1.add(textField_2);
 		textField_2.setColumns(10);
 		
+		@SuppressWarnings("rawtypes")
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(SystemColor.controlHighlight);
 		comboBox.setBounds(930, 99, 76, 21);
@@ -215,29 +217,22 @@ public class VentanaEmpleados extends JDialog {
 		Button2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button2.setForeground(Color.WHITE);
 		Button2.setBackground(new Color(255, 175, 0));
-		Button2.setBounds(105, 290, 165, 29);
+		Button2.setBounds(235, 290, 165, 29);
 		getContentPane().add(Button2);
 		
-		JButton Button3 = new JButton("Modificar Empleado");
+		JButton Button3 = new JButton("Eliminar Empleado");
 		Button3.setForeground(Color.WHITE);
 		Button3.setBackground(new Color(255, 175, 0));
 		Button3.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button3.setBounds(324, 290, 165, 29);
+		Button3.setBounds(464, 290, 165, 29);
 		getContentPane().add(Button3);
 		
 		JButton Button4 = new JButton("Editar Empleado");
 		Button4.setForeground(Color.WHITE);
 		Button4.setBackground(new Color(255, 175, 0));
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button4.setBounds(542, 290, 165, 29);
+		Button4.setBounds(683, 290, 165, 29);
 		getContentPane().add(Button4);
-		
-		JButton Button5 = new JButton("Añadir Empleado");
-		Button5.setForeground(Color.WHITE);
-		Button5.setBackground(new Color(255, 175, 0));
-		Button5.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button5.setBounds(754, 290, 165, 29);
-		getContentPane().add(Button5);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(25, 353, 1016, 396);

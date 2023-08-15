@@ -1,14 +1,11 @@
 
 import java.awt.EventQueue;
-
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -16,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class puntoDeVentas extends JFrame {
 
 	private JPanel contentPane;
@@ -49,9 +47,10 @@ public class puntoDeVentas extends JFrame {
 	 * Create the frame.
 	 */
 	public puntoDeVentas() {
+		setUndecorated(true);
 		setTitle(" ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1010, 721);
+		setBounds(473, 28, 1064, 781);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

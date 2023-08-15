@@ -1,18 +1,14 @@
-import javax.swing.JPanel;
+
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
-import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;

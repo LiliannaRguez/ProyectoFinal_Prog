@@ -149,13 +149,6 @@ public class iniciar extends JFrame {
 		panel8.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-						//dispose(); 
-						System.exit(EXIT_ON_CLOSE);
-			}
-		});
-		
 		btnCerrar.setBackground(new Color(242, 234, 225));
 		btnCerrar.setBorderPainted(false); 
 		panel8.add(btnCerrar);
@@ -220,6 +213,11 @@ public class iniciar extends JFrame {
 				btnContabilidad.setBackground((new Color(242, 234, 225)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
+				
+				VentanaInicio inicio = new VentanaInicio();
+				inicio.setVisible(true);
+				panel_1.add(inicio);
+				
 			}
 		});
 		
@@ -241,6 +239,10 @@ public class iniciar extends JFrame {
 			btnContabilidad.setBackground((new Color(242, 234, 225)));
 			btnUsuarios.setBackground((new Color(242, 234, 225)));
 			btnCerrar.setBackground((new Color(242, 234, 225)));
+			
+			Producto ventanaProducto = new Producto();
+			ventanaProducto.setVisible(true);
+			panel_2.add(ventanaProducto);
 			}
 		});
 	
@@ -262,9 +264,10 @@ public class iniciar extends JFrame {
 				btnContabilidad.setBackground((new Color(242, 234, 225)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
-				/*VentanaEmpleados nuevoempleado = new VentanaEmpleados();
-				nuevoempleado.setVisible(true);
-				panel_3.add(nuevoempleado);*/
+				
+				puntoDeVentas ventas = new puntoDeVentas();
+				ventas.setVisible(true);
+				panel_3.add(ventas);
 			}
 		});
 		
@@ -287,7 +290,7 @@ public class iniciar extends JFrame {
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
 				
-				Producto nuevoinventario = new Producto();
+				Inventario nuevoinventario = new Inventario();
 				nuevoinventario.setVisible(true);
 				panel_4.add(nuevoinventario); 
 			}
@@ -310,6 +313,9 @@ public class iniciar extends JFrame {
 				btnInventario.setBackground((new Color(242, 234, 225)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
+				VentanaContabilidad contabilidad = new VentanaContabilidad();
+				contabilidad.setVisible(true);
+				panel_5.add(contabilidad);
 			}
 		});
 		
@@ -378,14 +384,24 @@ public class iniciar extends JFrame {
 				panel_5.setVisible(false);
 				panel_6.setVisible(false);
 				panel_7.setVisible(false);
-				btnCerrar.setBackground((new Color(255, 175, 0)));
+				
+				dispose();
+				
+				LoginApp login = new LoginApp();
+				login.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				login.setVisible(true);
+				//panel_8.add(login);
+				
+				//System.exit(EXIT_ON_CLOSE);
+				
+				/*btnCerrar.setBackground((new Color(255, 175, 0)));
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnInicio.setBackground((new Color(242, 234, 225)));
 				btnProducto.setBackground((new Color(242, 234, 225)));
 				btnEmpleados.setBackground((new Color(242, 234, 225)));
 				btnVentas.setBackground((new Color(242, 234, 225)));
 				btnInventario.setBackground((new Color(242, 234, 225)));
-				btnContabilidad.setBackground((new Color(242, 234, 225)));
+				btnContabilidad.setBackground((new Color(242, 234, 225)));*/
 			}
 		});
 	}
