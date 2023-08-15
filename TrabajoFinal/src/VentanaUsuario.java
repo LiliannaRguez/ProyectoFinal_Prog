@@ -14,7 +14,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
-public class VentanaUsuaio extends JDialog {
+public class VentanaUsuario extends JDialog {
 	private JTextField textField1;
 	private JTextField textField2;
 	private JTextField textField3;
@@ -41,7 +41,7 @@ public class VentanaUsuaio extends JDialog {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaUsuaio() {
+	public VentanaUsuario() {
 		
 		setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -76,12 +76,13 @@ public class VentanaUsuaio extends JDialog {
 		textField1.setColumns(10);
 		
 		JButton Button1 = new JButton("");
-		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/Buscar_Icon.png")));
+		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/pngwing.com.png")));
+		Button1.setBackground(new Color(255, 175, 0));
 		Button1.setBounds(990, 38, 36, 29);
 		getContentPane().add(Button1);
 		
 		JPanel panel1 = new JPanel();
-		panel1.setBackground(new Color(248, 248, 255));
+		panel1.setBackground(new Color(240, 222, 173));
 		panel1.setBounds(25, 115, 1016, 119);
 		getContentPane().add(panel1);
 		panel1.setLayout(null);

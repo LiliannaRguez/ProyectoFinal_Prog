@@ -18,12 +18,12 @@ import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
-public class iniciar extends JFrame {
+public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
 
-	public iniciar() {
+	public VentanaPrincipal() {
 		
 	
 		
@@ -65,7 +65,7 @@ public class iniciar extends JFrame {
 		lbllogo.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lbllogo.setBackground(new Color(240, 240, 240));
 		lbllogo.setLabelFor(this);
-		lbllogo.setIcon(new ImageIcon(iniciar.class.getResource("/img/Mi proyecto.png")));
+		lbllogo.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/Mi proyecto.png")));
 		
 		JPanel panelNombre = new JPanel();
 		panelNombre.setBackground(new Color(242, 234, 225));
@@ -87,8 +87,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel1);
 		panel1.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnInicio = new JButton("Inicio");
-		btnInicio.setIcon(new ImageIcon(iniciar.class.getResource("/img/home.png")));
+		JButton btnInicio = new JButton("         Inicio");
+		btnInicio.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/home.png")));
 		btnInicio.setForeground(new Color(0, 0, 0));
 		btnInicio.setBackground(new Color(242, 234, 225));
 		btnInicio.setBorderPainted(false); 
@@ -98,8 +98,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel2);
 		panel2.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnProducto = new JButton("Producto");
-		btnProducto.setIcon(new ImageIcon(iniciar.class.getResource("/img/produc.png")));
+		JButton btnProducto = new JButton("    Producto");
+		btnProducto.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/produc.png")));
 		btnProducto.setBackground(new Color(242, 234, 225));
 		btnProducto.setBorderPainted(false); 
 		panel2.add(btnProducto);
@@ -108,8 +108,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel3);
 		panel3.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnVentas = new JButton("Ventas");
-		btnVentas.setIcon(new ImageIcon(iniciar.class.getResource("/img/sell.png")));
+		JButton btnVentas = new JButton("       Ventas");
+		btnVentas.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/sell.png")));
 		btnVentas.setBackground(new Color(242, 234, 225));
 		btnVentas.setBorderPainted(false); 
 		panel3.add(btnVentas);
@@ -118,8 +118,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel4);
 		panel4.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnInventario = new JButton("Inventario");
-		btnInventario.setIcon(new ImageIcon(iniciar.class.getResource("/img/inventory.png")));
+		JButton btnInventario = new JButton("  Inventario");
+		btnInventario.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/inventory.png")));
 		btnInventario.setBackground(new Color(242, 234, 225));
 		btnInventario.setBorderPainted(false); 
 		panel4.add(btnInventario);
@@ -129,7 +129,7 @@ public class iniciar extends JFrame {
 		panel5.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnContabilidad = new JButton("Contabilidad");
-		btnContabilidad.setIcon(new ImageIcon(iniciar.class.getResource("/img/contablilidad.png")));
+		btnContabilidad.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/contablilidad.png")));
 		btnContabilidad.setBackground(new Color(242, 234, 225));
 		btnContabilidad.setBorderPainted(false); 
 		panel5.add(btnContabilidad);
@@ -138,8 +138,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel6);
 		panel6.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnEmpleados = new JButton("Empleados");
-		btnEmpleados.setIcon(new ImageIcon(iniciar.class.getResource("/img/person.png")));
+		JButton btnEmpleados = new JButton("   Empleados");
+		btnEmpleados.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/person.png")));
 		btnEmpleados.setBackground(new Color(242, 234, 225));
 		btnEmpleados.setBorderPainted(false); 
 		panel6.add(btnEmpleados);
@@ -148,8 +148,8 @@ public class iniciar extends JFrame {
 		sidebar.add(panel7);
 		panel7.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnUsuarios = new JButton("Usuarios");
-		btnUsuarios.setIcon(new ImageIcon(iniciar.class.getResource("/img/manage.png")));
+		JButton btnUsuarios = new JButton("      Usuarios");
+		btnUsuarios.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/manage.png")));
 		btnUsuarios.setBackground(new Color(242, 234, 225));
 		btnUsuarios.setBorderPainted(false); 
 		panel7.add(btnUsuarios);
@@ -159,7 +159,7 @@ public class iniciar extends JFrame {
 		panel8.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.setIcon(new ImageIcon(iniciar.class.getResource("/img/exit_to_app.png")));
+		btnCerrar.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/exit_to_app.png")));
 		btnCerrar.setBackground(new Color(242, 234, 225));
 		btnCerrar.setBorderPainted(false); 
 		panel8.add(btnCerrar);
@@ -251,7 +251,7 @@ public class iniciar extends JFrame {
 			btnUsuarios.setBackground((new Color(242, 234, 225)));
 			btnCerrar.setBackground((new Color(242, 234, 225)));
 			
-			Producto ventanaProducto = new Producto();
+			VentanaProducto ventanaProducto = new VentanaProducto();
 			ventanaProducto.setVisible(true);
 			panel_2.add(ventanaProducto);
 			}
@@ -276,7 +276,7 @@ public class iniciar extends JFrame {
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
 				
-				puntoDeVentas ventas = new puntoDeVentas();
+				VentanapuntoDeVentas ventas = new VentanapuntoDeVentas();
 				ventas.setVisible(true);
 				panel_3.add(ventas);
 			}
@@ -301,7 +301,7 @@ public class iniciar extends JFrame {
 				btnUsuarios.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
 				
-				Inventario nuevoinventario = new Inventario();
+				VentanaInventario nuevoinventario = new VentanaInventario();
 				nuevoinventario.setVisible(true);
 				panel_4.add(nuevoinventario); 
 			}
@@ -375,7 +375,7 @@ public class iniciar extends JFrame {
 				btnContabilidad.setBackground((new Color(242, 234, 225)));
 				btnCerrar.setBackground((new Color(242, 234, 225)));
 				
-				VentanaUsuaio nuevoUsuario = new VentanaUsuaio();
+				VentanaUsuario nuevoUsuario = new VentanaUsuario();
 				nuevoUsuario.setVisible(true);
 				panel_7.add(nuevoUsuario);
 				//desktopPane.add(nuevoUsuario);
@@ -399,7 +399,7 @@ public class iniciar extends JFrame {
 				
 				dispose();
 				
-				LoginApp login = new LoginApp();
+				VentanaLoginApp login = new VentanaLoginApp();
 				login.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				login.setVisible(true);
 				//panel_8.add(login);

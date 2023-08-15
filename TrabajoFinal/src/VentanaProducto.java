@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class Producto extends JDialog {
+public class VentanaProducto extends JDialog {
 	private JTextField textField;
 	private JTable table;
 	private JTextField textField_1;
@@ -57,7 +57,7 @@ public class Producto extends JDialog {
 	/**
 	 * Create the application.
 	 */
-	public Producto() {
+	public VentanaProducto() {
 		initialize();
 		setVisible(true);
 	}
@@ -100,13 +100,13 @@ public class Producto extends JDialog {
 		textField.setColumns(10);
 		
 		JButton btnBuscador = new JButton("");
-		btnBuscador.setIcon(new ImageIcon(Producto.class.getResource("/img/pngwing.com.png")));
+		btnBuscador.setIcon(new ImageIcon(VentanaProducto.class.getResource("/img/pngwing.com.png")));
 		btnBuscador.setBackground(new Color(255, 175, 0));
 		btnBuscador.setBounds(990, 38, 36, 29);
 		getContentPane().add(btnBuscador);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(248, 248, 255));
+		panel.setBackground(new Color(240, 222, 173));
 		panel.setBounds(25, 115, 1016, 136);
 		getContentPane().add(panel);
 		panel.setLayout(null);

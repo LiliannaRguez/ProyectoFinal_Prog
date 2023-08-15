@@ -12,7 +12,7 @@ public class ventana {
 		 ventana_principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		 ventana_principal.setVisible(true);*/
 		 
-		 LoginApp ventana_LoginApp = new LoginApp();
+		 VentanaLoginApp ventana_LoginApp = new VentanaLoginApp();
 		 ventana_LoginApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		 ventana_LoginApp.setVisible(true);
 		

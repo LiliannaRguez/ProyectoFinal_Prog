@@ -71,7 +71,8 @@ public class VentanaContabilidad extends JDialog {
 		textField1.setColumns(10);
 		
 		JButton Button1 = new JButton("");
-		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/Buscar_Icon.png")));
+		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/pngwing.com.png")));
+		Button1.setBackground(new Color(255, 175, 0));
 		Button1.setBounds(990, 38, 36, 29);
 		getContentPane().add(Button1);
 		

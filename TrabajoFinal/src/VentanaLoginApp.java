@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
-public class LoginApp extends JFrame {
+public class VentanaLoginApp extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textUser;
@@ -33,7 +33,7 @@ public class LoginApp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginApp() {
+	public VentanaLoginApp() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 985, 694);
@@ -97,7 +97,7 @@ public class LoginApp extends JFrame {
 		JButton btnNewButton = new JButton("Iniciar Sesion");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iniciar newPanel = new iniciar();
+				VentanaPrincipal newPanel = new VentanaPrincipal();
 				newPanel.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				newPanel.setVisible(true);
 				dispose();

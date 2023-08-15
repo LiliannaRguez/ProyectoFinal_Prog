@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 
 @SuppressWarnings("serial")
-public class puntoDeVentas extends JDialog {
+public class VentanapuntoDeVentas extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -39,7 +39,7 @@ public class puntoDeVentas extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					puntoDeVentas frame = new puntoDeVentas();
+					VentanapuntoDeVentas frame = new VentanapuntoDeVentas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class puntoDeVentas extends JDialog {
 	/**
 	 * Create the frame.
 	 */
-	public puntoDeVentas() {
+	public VentanapuntoDeVentas() {
 		setUndecorated(true);
 		setTitle(" ");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,11 +82,6 @@ public class puntoDeVentas extends JDialog {
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_2_1.setBounds(487, 93, 200, 17);
 		panel_1.add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("TEL:: 829-745-8951");
-		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2_1_1.setBounds(787, 93, 152, 17);
-		panel_1.add(lblNewLabel_2_1_1);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(Color.BLACK);

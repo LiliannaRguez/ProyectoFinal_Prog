@@ -65,13 +65,14 @@ public class VentanaInicio extends JDialog {
 		textField1.setColumns(10);
 		
 		JButton Button1 = new JButton("");
-		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/Buscar_Icon.png")));
+		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/pngwing.com.png")));
+		Button1.setBackground(new Color(255, 175, 0));
 		Button1.setBounds(990, 38, 36, 29);
 		getContentPane().add(Button1);
 		
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(new Color(240, 249, 255));
-		panel1.setBounds(16, 117, 240, 151);
+		panel1.setBounds(16, 117, 240, 163);
 		getContentPane().add(panel1);
 		panel1.setLayout(null);
 		
@@ -92,12 +93,12 @@ public class VentanaInicio extends JDialog {
 		
 		Button2.setForeground(new Color(0, 0, 0));
 		Button2.setBackground(new Color(240, 249, 255));
-		Button2.setBounds(0, 1, 240, 151);
+		Button2.setBounds(0, 1, 240, 162);
 		panel1.add(Button2);
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(new Color(254, 246, 251));
-		panel2.setBounds(270, 117, 240, 151);
+		panel2.setBounds(270, 117, 240, 163);
 		getContentPane().add(panel2);
 		panel2.setLayout(null);
 		
@@ -112,12 +113,12 @@ public class VentanaInicio extends JDialog {
 		Button3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button3.setHorizontalAlignment(SwingConstants.LEFT);
 		Button3.setBackground(new Color(254, 246, 251));
-		Button3.setBounds(0, 1, 240, 151);
+		Button3.setBounds(0, 1, 240, 162);
 		panel2.add(Button3);
 		
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(new Color(254, 251, 236));
-		panel3.setBounds(526, 117, 240, 151);
+		panel3.setBounds(526, 117, 240, 163);
 		getContentPane().add(panel3);
 		panel3.setLayout(null);
 		
@@ -132,12 +133,12 @@ public class VentanaInicio extends JDialog {
 		Button4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button4.setHorizontalAlignment(SwingConstants.LEFT);
 		Button4.setBackground(new Color(254, 251, 236));
-		Button4.setBounds(0, 1, 240, 151);
+		Button4.setBounds(0, 1, 240, 162);
 		panel3.add(Button4);
 		
 		JPanel panel4 = new JPanel();
 		panel4.setBackground(new Color(225, 210, 225));
-		panel4.setBounds(786, 117, 240, 152);
+		panel4.setBounds(786, 117, 240, 163);
 		getContentPane().add(panel4);
 		panel4.setLayout(null);
 		
@@ -152,7 +153,7 @@ public class VentanaInicio extends JDialog {
 		Button5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button5.setHorizontalAlignment(SwingConstants.LEFT);
 		Button5.setBackground(new Color(225, 210, 225));
-		Button5.setBounds(0, 0, 240, 152);
+		Button5.setBounds(0, 0, 240, 163);
 		panel4.add(Button5);
 		
 	

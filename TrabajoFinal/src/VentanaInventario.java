@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class Inventario extends JDialog {
+public class VentanaInventario extends JDialog {
 	private JTextField textField;
 	private JTable table;
 	
@@ -51,7 +51,7 @@ public class Inventario extends JDialog {
 	/**
 	 * Create the application.
 	 */
-	public Inventario() {
+	public VentanaInventario() {
 		initialize();
 		setVisible(true);
 	}
@@ -94,7 +94,7 @@ public class Inventario extends JDialog {
 		textField.setColumns(10);
 		
 		JButton btnBuscador = new JButton("");
-		btnBuscador.setIcon(new ImageIcon(Inventario.class.getResource("/img/pngwing.com.png")));
+		btnBuscador.setIcon(new ImageIcon(VentanaInventario.class.getResource("/img/pngwing.com.png")));
 		btnBuscador.setBackground(new Color(255, 175, 0));
 		btnBuscador.setBounds(990, 38, 36, 29);
 		getContentPane().add(btnBuscador);
