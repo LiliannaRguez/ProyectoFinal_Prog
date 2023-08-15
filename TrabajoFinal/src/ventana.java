@@ -16,7 +16,7 @@ public class ventana {
 		 ventana_LoginApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		 ventana_LoginApp.setVisible(true);
 		
-		 /*mysqlConexion objetoconexion = new mysqlConexion();
+		/* mysqlConexion objetoconexion = new mysqlConexion();
 			objetoconexion.estableceConexion();*/
 	}
 

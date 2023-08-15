@@ -80,7 +80,6 @@ public class VentanaEmpleados extends JDialog {
 		textField1.setColumns(10);
 		
 		JButton Button1 = new JButton("");
-		Button1.setIcon(new ImageIcon(VentanaEmpleados.class.getResource("/img/Buscar_Icon.png")));
 		Button1.setBounds(990, 38, 36, 29);
 		getContentPane().add(Button1);
 		
@@ -222,13 +221,13 @@ public class VentanaEmpleados extends JDialog {
 		
 		JButton Button3 = new JButton("Eliminar Empleado");
 		Button3.setForeground(Color.WHITE);
-		Button3.setBackground(new Color(255, 175, 0));
+		Button3.setBackground(new Color(254, 175, 0));
 		Button3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button3.setBounds(464, 290, 165, 29);
 		getContentPane().add(Button3);
 		
 		JButton Button4 = new JButton("Editar Empleado");
-		Button4.setForeground(Color.WHITE);
+		Button4.setForeground(new Color(255, 255, 255));
 		Button4.setBackground(new Color(255, 175, 0));
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button4.setBounds(683, 290, 165, 29);

@@ -11,7 +11,7 @@ public class mysqlConexion {
 	
 	String usuario = "root";
 	String contrasenia = "root1";
-	String bd = "bdagenda";
+	String bd = "tf_restaurante";
 	String ip = "localhost";
 	String puerto = "3306";
 	

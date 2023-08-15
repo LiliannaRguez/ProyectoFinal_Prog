@@ -41,7 +41,7 @@ public class Producto extends JDialog {
 		});
 	}*/
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -52,7 +52,7 @@ public class Producto extends JDialog {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
@@ -142,7 +142,7 @@ public class Producto extends JDialog {
 		panel.add(lblNewLabel_6);
 		
 		textField_1 = new JTextField();
-		textField_1.setBackground(SystemColor.controlHighlight);
+		textField_1.setBackground(new Color(217, 217, 217));
 		textField_1.setBounds(67, 19, 227, 19);
 		textField_1.setColumns(10);
 		panel.add(textField_1);

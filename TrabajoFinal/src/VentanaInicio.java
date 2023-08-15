@@ -82,6 +82,7 @@ public class VentanaInicio extends JDialog {
 		textPane_3.setBackground(new Color(240, 249, 255));
 		
 		JButton Button2 = new JButton("Empleados");
+		Button2.setIcon(new ImageIcon(VentanaInicio.class.getResource("/img/person48.png")));
 		Button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -91,7 +92,7 @@ public class VentanaInicio extends JDialog {
 		
 		Button2.setForeground(new Color(0, 0, 0));
 		Button2.setBackground(new Color(240, 249, 255));
-		Button2.setBounds(0, 0, 240, 151);
+		Button2.setBounds(0, 1, 240, 151);
 		panel1.add(Button2);
 		
 		JPanel panel2 = new JPanel();
@@ -107,10 +108,11 @@ public class VentanaInicio extends JDialog {
 		panel2.add(textPane_1);
 		
 		JButton Button3 = new JButton("Producto");
+		Button3.setIcon(new ImageIcon(VentanaInicio.class.getResource("/img/inventory40.png")));
 		Button3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button3.setHorizontalAlignment(SwingConstants.LEFT);
 		Button3.setBackground(new Color(254, 246, 251));
-		Button3.setBounds(0, 0, 240, 151);
+		Button3.setBounds(0, 1, 240, 151);
 		panel2.add(Button3);
 		
 		JPanel panel3 = new JPanel();
@@ -126,10 +128,11 @@ public class VentanaInicio extends JDialog {
 		textPane.setBackground(new Color(254, 251, 236));
 		
 		JButton Button4 = new JButton("Ventas");
+		Button4.setIcon(new ImageIcon(VentanaInicio.class.getResource("/img/sell40.png")));
 		Button4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button4.setHorizontalAlignment(SwingConstants.LEFT);
 		Button4.setBackground(new Color(254, 251, 236));
-		Button4.setBounds(0, 0, 240, 151);
+		Button4.setBounds(0, 1, 240, 151);
 		panel3.add(Button4);
 		
 		JPanel panel4 = new JPanel();
@@ -145,6 +148,7 @@ public class VentanaInicio extends JDialog {
 		textPane_2.setBackground(new Color(225, 210, 225));
 		
 		JButton Button5 = new JButton("Usuarios");
+		Button5.setIcon(new ImageIcon(VentanaInicio.class.getResource("/img/manage40.png")));
 		Button5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button5.setHorizontalAlignment(SwingConstants.LEFT);
 		Button5.setBackground(new Color(225, 210, 225));
