@@ -23,6 +23,17 @@ public class CUsuario {
 	String Clave;
 	String Tipo;
 	
+	public CUsuario (int Usuario_id,String Usuario,String Clave,String Tipo){
+		this.Usuario_id = Usuario_id;
+		this.Usuario = Usuario;
+		this.Clave = Clave;
+		this.Tipo = Tipo;
+	}
+	
+	public CUsuario (){
+		
+	}
+	
 	public int getUsuario_id() {
 		return Usuario_id;
 	}
