@@ -1,3 +1,4 @@
+package VentanasGraficas;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;

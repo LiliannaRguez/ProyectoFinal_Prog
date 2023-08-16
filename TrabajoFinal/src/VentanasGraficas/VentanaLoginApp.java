@@ -1,3 +1,4 @@
+package VentanasGraficas;
 
 
 import java.awt.Graphics;
@@ -7,16 +8,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import Funcionalidad.CUsuario;
 
 
 
@@ -71,7 +76,7 @@ public class VentanaLoginApp extends JFrame {
 		panel.add(panel_2, BorderLayout.SOUTH);
 		panel_2.setLayout(null);
 		
-		JLabel lblUsuario = new JLabel("Usuario ");
+		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblUsuario.setBounds(41, 10, 67, 13);
 		panel_2.add(lblUsuario);
@@ -97,10 +102,14 @@ public class VentanaLoginApp extends JFrame {
 		JButton btnNewButton = new JButton("Iniciar Sesion");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal newPanel = new VentanaPrincipal();
-				newPanel.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				newPanel.setVisible(true);
-				dispose();
+				
+				if (textUser.getText().equals("") || textClave.getPassword().equals("")) {
+					JOptionPane.showMessageDialog(null,"Debe Ingrasar Datos en las Cajas de Texto");
+					textUser.requestFocus();
+				} else {
+					CUsuario odjetoUsuario = new CUsuario();
+					odjetoUsuario.ValidarUsuario(textUser, textClave, VentanaLoginApp.this);
+				}
 			}
 		});
 		

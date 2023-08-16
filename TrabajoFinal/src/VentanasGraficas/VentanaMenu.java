@@ -1,3 +1,4 @@
+package VentanasGraficas;
 
 
 import java.awt.Color;

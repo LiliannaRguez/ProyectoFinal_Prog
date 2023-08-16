@@ -1,3 +1,4 @@
+package VentanasGraficas;
 
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;

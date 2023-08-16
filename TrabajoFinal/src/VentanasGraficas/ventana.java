@@ -1,3 +1,4 @@
+package VentanasGraficas;
 import javax.swing.JFrame;
 
 import conexion.mysqlConexion;

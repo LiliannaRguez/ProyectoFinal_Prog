@@ -1,3 +1,4 @@
+package VentanasGraficas;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -24,8 +25,6 @@ public class VentanaPrincipal extends JFrame {
 
 
 	public VentanaPrincipal() {
-		
-	
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1551, 830);
@@ -396,7 +395,7 @@ public class VentanaPrincipal extends JFrame {
 				panel_5.setVisible(false);
 				panel_6.setVisible(false);
 				panel_7.setVisible(false);
-				
+				panel8.setVisible(false);
 				dispose();
 				
 				VentanaLoginApp login = new VentanaLoginApp();
