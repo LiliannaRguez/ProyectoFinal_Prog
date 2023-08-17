@@ -8,20 +8,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-import Funcionalidad.CrudMetodos;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import Funcionalidad.CEmpleados;
 import Funcionalidad.CUsuario;
-import conexion.mysqlConexion;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.EventQueue;
@@ -33,11 +25,7 @@ public class VentanaUsuario extends JDialog {
 	private JTextField textField2;
 	private JTextField textField3;
 	private JTable table;
-	private JTextField textField;
 	private JPasswordField passwordField;
-	//mysqlConexion conexionDB = new mysqlConexion();
-	//Connection connection = conexionDB.estableceConexion();
-	
 
 	/**
 	 * Launch the application.
@@ -60,12 +48,12 @@ public class VentanaUsuario extends JDialog {
 	 */
 	public VentanaUsuario() {
 		
-		//setUndecorated(true);
+		setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(SystemColor.menu);
 		getContentPane().setEnabled(false);
-		setBounds(473, 28, 1064, 781);
+		setBounds(487, 30, 1062, 775);
 		//setBounds(1000, 100, 1067, 781);
 		getContentPane().setLayout(null);
 		
@@ -100,7 +88,7 @@ public class VentanaUsuario extends JDialog {
 		
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(new Color(240, 222, 173));
-		panel1.setBounds(25, 115, 1016, 100);
+		panel1.setBounds(25, 136, 1016, 60);
 		getContentPane().add(panel1);
 		panel1.setLayout(null);
 		
@@ -134,17 +122,8 @@ public class VentanaUsuario extends JDialog {
 		Label5.setBounds(603, 21, 70, 13);
 		panel1.add(Label5);
 		
-		JLabel lblNewLabel = new JLabel("Tipo :");
-		lblNewLabel.setBounds(10, 66, 45, 13);
-		panel1.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBackground(SystemColor.controlHighlight);
-		textField.setBounds(70, 63, 210, 19);
-		panel1.add(textField);
-		textField.setColumns(10);
-		
 		passwordField = new JPasswordField();
+		passwordField.setBackground(SystemColor.controlHighlight);
 		passwordField.setBounds(648, 19, 178, 19);
 		panel1.add(passwordField);
 		
@@ -170,7 +149,7 @@ public class VentanaUsuario extends JDialog {
 		getContentPane().add(Button4);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 306, 1016, 437);
+		scrollPane.setBounds(25, 317, 1016, 437);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -183,42 +162,46 @@ public class VentanaUsuario extends JDialog {
 			}
 		));
 		
-		
-        
-		
 		Button2.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	int Usuario_id = Integer.parseInt(textField2.getText());
-		        String Usuario = textField3.getText();
-		        String Clave = passwordField.getText();
-		        String Tipo = textField.getText();
-
-		        //int id = Integer.parseInt(Usuario_id);
-
-		        CUsuario nuevoUsuario = new CUsuario(Usuario_id, Usuario, Clave, Tipo);
-		        nuevoUsuario.guardar();
 		        
+		    	int ID =Integer.parseInt(textField2.getText());
+		    	String usuario = textField3.getText();
+		        String clave = new String(passwordField.getPassword());
+		        
+		        
+		        CUsuario nuevoUsuario = new CUsuario(ID, usuario, clave,table);
+		        nuevoUsuario.guardar();
+		       nuevoUsuario.actualizarTabla();
 		        
 		    }
 		});
-
+		
 		Button3.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        CUsuario usuario = new CUsuario();
-		        usuario.eliminar();
 		        
-		       
+		        int ID = Integer.parseInt(textField2.getText());
+		        
+		        CUsuario usuarioAEliminar = new CUsuario(table);
+		        usuarioAEliminar.setID(ID);
+		        usuarioAEliminar.eliminar();
+		        usuarioAEliminar.actualizarTabla();
 		    }
 		});
 
 		Button4.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        CUsuario usuario = new CUsuario();
-		        usuario.editar();
+		        
+		        int ID = Integer.parseInt(textField2.getText());
+		        String usuario = textField3.getText();
+		        String clave = new String(passwordField.getPassword());
 		       
 		        
+		        CUsuario usuarioAEditar = new CUsuario(ID, usuario, clave, table);
+		        usuarioAEditar.editar();
+		        usuarioAEditar.actualizarTabla();
 		    }
 		});
-		
+
 	}
 }

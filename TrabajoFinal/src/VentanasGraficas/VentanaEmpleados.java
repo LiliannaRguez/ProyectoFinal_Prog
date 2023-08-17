@@ -24,6 +24,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import Funcionalidad.CEmpleados;
+import Funcionalidad.CUsuario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -42,16 +44,11 @@ public class VentanaEmpleados extends JDialog {
 	private JTable table;
 	private JComboBox comboBox1;
 	
-	
-	
-	
-	//mysqlConexion conexionDB = new mysqlConexion();
-	//Connection connection = conexionDB.estableceConexion();
 
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,18 +59,18 @@ public class VentanaEmpleados extends JDialog {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaEmpleados() {
 		
-		//setUndecorated(true);
+		setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
-		setBounds(473, 28, 1064, 781);
+		setBounds(487, 30, 1062, 775);
 		getContentPane().setLayout(null);
 		
 		JSeparator separator = new JSeparator();
@@ -264,60 +261,62 @@ public class VentanaEmpleados extends JDialog {
 			}
 		));
 		
-		
-		
 		Button2.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        String Nombre = textField.getText();
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	String Nombre = textField.getText();
 		        String Correo = textField3.getText();
 		        String telefono = textField4.getText();
-		        int Empleado_id = Integer.parseInt(textField5.getText());
-		        String fecha_admision = textField6.getText();
+		        int ID = Integer.parseInt(textField5.getText());
+		        String fecha_Admision = textField6.getText();
 		        int Salario = Integer.parseInt(textField7.getText());
-		        String Nomb_puesto = textField_1.getText();
-		        String Tipo = comboBox1.getSelectedItem().toString();
+		        String Puesto = textField_1.getText();
+		        String Turno = comboBox1.getSelectedItem().toString();
 		        String Horario = textField_2.getText();
+		        
+		        
+	            CEmpleados empleado = new CEmpleados(Nombre, Correo, telefono,ID, fecha_Admision, Salario, Puesto, Turno, Horario, table);
+	            empleado.guardar();
+	            empleado.actualizarTabla();
 
-		        CEmpleados empleado = new CEmpleados();
-		        empleado.guardar(Nombre, Correo, telefono, Empleado_id, fecha_admision, Salario, Nomb_puesto, Tipo, Horario);
-		    }
-		});
+	            //empleado.cargarDatosDesdeBaseDeDatos(); 
+	            
+	         
+	        }
+	    });
 		
 		Button3.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-	        int selectedRow = table.getSelectedRow();
-	        if (selectedRow != -1) {
-	            int Empleado_id = (int) table.getValueAt(selectedRow, 3); 
-	            CEmpleados empleado = new CEmpleados(Empleado_id);
-	            empleado.eliminar();
-	        } else {
-	            JOptionPane.showMessageDialog(VentanaEmpleados.this, "Selecciona un empleado para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	int ID = Integer.parseInt(textField5.getText());
+	        	CEmpleados empleadoAEliminar = new CEmpleados( table);
+	        	empleadoAEliminar.setID(ID);
+	        	empleadoAEliminar.eliminar();
+	        	empleadoAEliminar.actualizarTabla();
+	    
 	        }
-	    }
-	});
-	
-		Button4.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	int selectedRow = table.getSelectedRow();
-	        if (selectedRow != -1) {
-	            /*String nuevoNombre = textField.getText();
-	            String nuevoCorreo = textField3.getText();
-	            String nuevoTelefono = textField4.getText();
-	            int nuevoSalario = Integer.parseInt(textField7.getText());
-	            String nuevoNombPuesto = textField_1.getText();
-	            String nuevoTipo = comboBox1.getSelectedItem().toString();
-	            String nuevoHorario = textField_2.getText();*/
-	            
-	            int Empleado_id = (int) table.getValueAt(selectedRow, 3);
-	            CEmpleados empleado = new CEmpleados(Empleado_id);
-	            empleado.editar();
-	        } else {
-	            JOptionPane.showMessageDialog(VentanaEmpleados.this, "Selecciona un empleado para editar.", "Error", JOptionPane.ERROR_MESSAGE);
-	        }
-	    }
-	});
+	    });
 		
-
-
-    }
+		Button4.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	int ID = Integer.parseInt(textField5.getText());
+	        	
+	        	String Nombre = textField.getText();
+		        String Correo = textField3.getText();
+		        String telefono = textField4.getText();
+		        String fecha_Admision = textField6.getText();
+		        int Salario = Integer.parseInt(textField7.getText());
+		        String Puesto = textField_1.getText();
+		        String Turno = comboBox1.getSelectedItem().toString();
+		        String Horario = textField_2.getText();
+	        	
+	            CEmpleados empleadoAEditar = new CEmpleados (Nombre, Correo, telefono,ID, fecha_Admision, Salario, Puesto, Turno, Horario, table);
+	            empleadoAEditar.editar();
+	            empleadoAEditar.actualizarTabla();
+	            
+	        }
+	    });
+		
+	}
 }

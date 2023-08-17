@@ -1,53 +1,52 @@
 package Funcionalidad;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 import VentanasGraficas.VentanaPrincipal;
-import com.mysql.cj.protocol.Resultset;
-
 import conexion.mysqlConexion;
 
 public class CUsuario implements CrudMetodos{
 
-	int Usuario_id;
+	int ID;
 	String Usuario;
 	String Clave;
-	String Tipo;
 	JTable table;
 	
 	
 	mysqlConexion conexionDB = new mysqlConexion();
 	Connection connection = conexionDB.estableceConexion();
 	
-	public CUsuario (int Usuario_id, String Usuario, String Clave, String Tipo){
-		this.Usuario_id = Usuario_id;
+	public CUsuario (int ID, String Usuario, String Clave,JTable table){
+		this.ID = ID;
 		this.Usuario = Usuario;
 		this.Clave = Clave;
-		this.Tipo = Tipo;
+		this.table = table;
 	
 	}
 	
-	public CUsuario (){
-		
-	}
 	
-	public int getUsuario_id() {
-		return Usuario_id;
+	public CUsuario(JTable table2) {
+		// TODO Auto-generated constructor stub
 	}
-	public void setUsuario_id(int Usuario_id) {
-		this.Usuario_id= Usuario_id;
+
+	public CUsuario() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public int getID() {
+		return ID;
+	}
+	public void setID(int ID) {
+		this.ID= ID;
 	}
 	public String getUsuario() {
 		return Usuario;
@@ -61,12 +60,7 @@ public class CUsuario implements CrudMetodos{
 	public void setClave(String Clave) {
 		this.Clave= Clave;
 	}
-	public String getTipo() {
-		return Tipo;
-	}
-	public void setTipo(String Tipo) {
-		this.Tipo= Tipo;
-	}
+	
 
 	
 	public void ValidarUsuario (JTextField Usuario,JPasswordField Clave, JFrame ventana) {
@@ -107,68 +101,60 @@ public class CUsuario implements CrudMetodos{
 	@Override
 	public void guardar() {
 		// TODO Auto-generated method stub
-		String query = "INSERT INTO Usuario (Usuario_id, Usuario, Clave, Tipo) VALUES (?, ?, ?, ?)";
-	    
-	    try {
-	        PreparedStatement preparedStatement = connection.prepareStatement(query);
-	        preparedStatement.setInt(1, Usuario_id);
-	        preparedStatement.setString(2, Usuario);
-	        preparedStatement.setString(3, Clave);
-	        preparedStatement.setString(4, Tipo);
-	        preparedStatement.executeUpdate();
-	        
-	        JOptionPane.showMessageDialog(null, "Usuario guardado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-	        
-	        actualizarTabla();
-	    } catch (SQLException e) {
-	        JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-	    }
+		String query = "INSERT INTO Usuario (ID, Usuario, Clave) VALUES ( ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, ID);
+            preparedStatement.setString(2, Usuario);
+            preparedStatement.setString(3, Clave);
+        
+
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro guardado correctamente.");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo guardar el registro, error: " + e.toString());
+        }
+        actualizarTabla();
 	}
 
 	@Override
 	public void eliminar() {
 		// TODO Auto-generated method stub
-		int selectedRow = table.getSelectedRow();
-	    if (selectedRow != -1) {
-	        int usuarioId = (int) table.getValueAt(selectedRow, 0); 
-	        
-	        
-	        String query = "DELETE FROM Usuario WHERE Usuario_id = ?";
-	        
-	        try {
-	            PreparedStatement preparedStatement = connection.prepareStatement(query);
-	            preparedStatement.setInt(1, usuarioId);
-	            preparedStatement.executeUpdate();
-	            
-	           
-	            actualizarTabla();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    } else {
-	        
-	        JOptionPane.showMessageDialog(null, "Selecciona un usuario para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-	    }
+		String query = "DELETE FROM Usuario WHERE ID = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, ID);
+
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro, error: " + e.toString());
+        }
+        actualizarTabla();
 	}
 
 	@Override
 	public void editar() {
 		// TODO Auto-generated method stub
-		String query = "UPDATE Usuario SET Usuario = ?, Clave = ?, Tipo = ? WHERE Usuario_id = ?";
-	    
-	    try {
-	        PreparedStatement preparedStatement = connection.prepareStatement(query);
-	        preparedStatement.setString(1, Usuario); 
-	        preparedStatement.setString(2, Clave);  
-	        preparedStatement.setString(3, Tipo);  
-	        preparedStatement.setInt(4, Usuario_id); 
-	        preparedStatement.executeUpdate();
-	        
-	        actualizarTabla();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	
+		String query = "UPDATE Usuario SET Usuario=?, Clave=? WHERE ID=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, Usuario);
+            preparedStatement.setString(2, Clave);
+            preparedStatement.setInt(3, ID);
+
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro actualizado correctamente.");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el registro, error: " + e.toString());
+        }
+        actualizarTabla();
 	}
 
 	@Override
@@ -177,26 +163,26 @@ public class CUsuario implements CrudMetodos{
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 	    model.setRowCount(0);
 
-	    String query = "SELECT Usuario_id, Usuario, Clave, Tipo FROM Usuario";
+	    
+	    String query = "SELECT ID, Usuario, Clave FROM Usuario";
 
 	    try {
 	        PreparedStatement preparedStatement = connection.prepareStatement(query);
 	        ResultSet resultSet = preparedStatement.executeQuery();
 
 	        while (resultSet.next()) {
-	            int usuarioId = resultSet.getInt("Usuario_id");
-	            String usuario = resultSet.getString("Usuario");
-	            String clave = resultSet.getString("Clave");
-	            String tipo = resultSet.getString("Tipo");
+	            int ID = resultSet.getInt("ID");
+	            String Usuario = resultSet.getString("Usuario");
+	            String Clave = resultSet.getString("Clave");
+	          
 
-	            model.addRow(new Object[]{usuarioId, usuario, clave, tipo});
+	            model.addRow(new Object[]{ID, Usuario, Clave});
 	        }
 
-	        resultSet.close();
+	        
+	        table.setModel(model);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
-	}
-
-
+    }
 }

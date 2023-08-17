@@ -45,7 +45,7 @@ public class VentanaContabilidad extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
-		setBounds(473, 28, 1082, 781);
+		setBounds(487, 30, 1062, 775);
 		getContentPane().setLayout(null);
 		
 		JSeparator separator = new JSeparator();

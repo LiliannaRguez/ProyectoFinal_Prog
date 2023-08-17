@@ -56,7 +56,7 @@ public class VentanapuntoDeVentas extends JDialog {
 		setUndecorated(true);
 		setTitle(" ");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(473, 28, 1064, 781);
+		setBounds(487, 30, 1062, 775);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

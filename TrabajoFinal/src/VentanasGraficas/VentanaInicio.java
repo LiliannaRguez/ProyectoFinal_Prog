@@ -44,7 +44,7 @@ public class VentanaInicio extends JDialog {
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(SystemColor.menu);
 		getContentPane().setEnabled(false);
-		setBounds(473, 28, 1064, 781);
+		setBounds(487, 30, 1062, 775);
 		//setBounds(1000, 100, 1067, 781);
 		getContentPane().setLayout(null);
 		
