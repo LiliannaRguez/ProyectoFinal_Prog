@@ -3,9 +3,16 @@ package VentanasGraficas;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import conexion.mysqlConexion;
+
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JButton;
@@ -52,9 +59,15 @@ public class VentanaInventario extends JDialog {
 	/**
 	 * Create the application.
 	 */
+    mysqlConexion cc = new mysqlConexion();
+    Connection con = cc.estableceConexion();
+    
 	public VentanaInventario() {
 		initialize();
 		setVisible(true);
+		
+		 mostrarDatos();
+		 
 	}
 
 	/**
@@ -100,18 +113,68 @@ public class VentanaInventario extends JDialog {
 		btnBuscador.setBounds(990, 38, 36, 29);
 		getContentPane().add(btnBuscador);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 85, 1016, 664);
-		getContentPane().add(scrollPane);
-		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre", "Precio", "Stock", "ID", "Comentario"
-			}
-		));
-		scrollPane.setViewportView(table);
+		table.setBounds(25, 157, 1016, 637);
+		getContentPane().add(table);
+		
+		JLabel lblNewLabel_2 = new JLabel("Producto_id");
+		lblNewLabel_2.setBounds(73, 114, 86, 35);
+		getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Medida_id");
+		lblNewLabel_3.setBounds(227, 108, 130, 47);
+		getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Nombre");
+		lblNewLabel_4.setBounds(378, 108, 92, 47);
+		getContentPane().add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Precio");
+		lblNewLabel_4_1.setBounds(541, 108, 92, 47);
+		getContentPane().add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("Inventario_id");
+		lblNewLabel_4_2.setBounds(892, 108, 92, 47);
+		getContentPane().add(lblNewLabel_4_2);
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Plato_id");
+		lblNewLabel_4_1_1.setBounds(708, 108, 92, 47);
+		getContentPane().add(lblNewLabel_4_1_1);
+		
+		
+		
 	}
+	
+    public void mostrarDatos() {
+    	
+        String[] titulos = {"Producto_id", "Medida_id", "Nombre", "Precio", "Plato_id", "Inventario_id"};
+        String[] registros = new String[6];
+
+        DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+
+        String SQL = "SELECT * FROM Productoss"; // Cambiar a "Productoss" si ese es el nombre correcto de la tabla
+
+        try {
+            Statement st = (Statement) con.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                registros[0] = rs.getString("Producto_id");
+                registros[1] = rs.getString("Medida_id");
+                registros[2] = rs.getString("Nombre");
+                registros[3] = rs.getString("Precio");
+                registros[4] = rs.getString("Plato_id");
+                registros[5] = rs.getString("Inventario_id");
+
+                modelo.addRow(registros);
+                
+            }
+
+          table.setModel(modelo);
+            
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar datos: " + e.getMessage());
+        }
+    }
 }
