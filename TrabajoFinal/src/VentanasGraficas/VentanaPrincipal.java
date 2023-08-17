@@ -25,6 +25,8 @@ public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
+	
+
 
 	public VentanaPrincipal() {
 		
@@ -32,6 +34,9 @@ public class VentanaPrincipal extends JFrame {
 		setBounds(100, 100, 1551, 830);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		
+		
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -418,6 +423,8 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 	}
+	
+
 
 
 

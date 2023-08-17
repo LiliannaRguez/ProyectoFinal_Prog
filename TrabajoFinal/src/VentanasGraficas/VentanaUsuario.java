@@ -9,15 +9,25 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import java.awt.SystemColor;
 import Funcionalidad.CUsuario;
+import conexion.mysqlConexion;
+
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.EventQueue;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class VentanaUsuario extends JDialog {
@@ -26,6 +36,9 @@ public class VentanaUsuario extends JDialog {
 	private JTextField textField3;
 	private JTable table;
 	private JPasswordField passwordField;
+	private DefaultTableModel model;
+	mysqlConexion conexionDB = new mysqlConexion();
+	Connection connection = conexionDB.estableceConexion();
 
 	/**
 	 * Launch the application.
@@ -147,20 +160,37 @@ public class VentanaUsuario extends JDialog {
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button4.setBounds(648, 242, 165, 29);
 		getContentPane().add(Button4);
-		
-		JScrollPane scrollPane = new JScrollPane();
+	
+		model = new DefaultTableModel();
+        table = new JTable(model);
+        table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+
+        			    int filaSeleccionada = table.rowAtPoint(e.getPoint());
+
+        			    textField2.setText(table.getValueAt(filaSeleccionada, 0).toString());
+        			    textField3.setText(table.getValueAt(filaSeleccionada, 1).toString());
+        			    passwordField.setText(table.getValueAt(filaSeleccionada, 2).toString());
+        			    
+        				
+        			}
+        		}); 
+        	
+        
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        model.addColumn("ID");
+        model.addColumn("Usuario");
+        model.addColumn("Clave");
+
+        
 		scrollPane.setBounds(25, 317, 1016, 437);
 		getContentPane().add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ID", "Usuario", "Clave "
-			}
-		));
+
+        cargarDatosDesdeBaseDeDatos(); 
+        
+        
 		
 		Button2.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -173,35 +203,62 @@ public class VentanaUsuario extends JDialog {
 		        CUsuario nuevoUsuario = new CUsuario(ID, usuario, clave,table);
 		        nuevoUsuario.guardar();
 		       nuevoUsuario.actualizarTabla();
-		        
+	
 		    }
 		});
 		
 		Button3.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        
-		        int ID = Integer.parseInt(textField2.getText());
-		        
-		        CUsuario usuarioAEliminar = new CUsuario(table);
-		        usuarioAEliminar.setID(ID);
-		        usuarioAEliminar.eliminar();
-		        usuarioAEliminar.actualizarTabla();
-		    }
+		   
+		    	public void actionPerformed(ActionEvent e) {
+		            int selectedRow = table.getSelectedRow();
+		            if (selectedRow == -1) {
+		                JOptionPane.showMessageDialog(null, "Selecciona un usuario de la tabla para eliminar.");
+		                return;
+		            }
+
+		            int ID = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+		            System.out.println("ID to delete: " + ID);
+
+		            CUsuario usuarioAEliminar = new CUsuario(ID, "", "", table);
+		            usuarioAEliminar.eliminar();
+		            usuarioAEliminar.actualizarTabla();
+		        }
 		});
 
 		Button4.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        
-		        int ID = Integer.parseInt(textField2.getText());
+		    	int ID = Integer.parseInt(textField2.getText());
 		        String usuario = textField3.getText();
 		        String clave = new String(passwordField.getPassword());
 		       
-		        
 		        CUsuario usuarioAEditar = new CUsuario(ID, usuario, clave, table);
 		        usuarioAEditar.editar();
-		        usuarioAEditar.actualizarTabla();
+		       
 		    }
 		});
 
 	}
+	private void cargarDatosDesdeBaseDeDatos() {
+
+        String query = "SELECT ID, Usuario, Clave FROM Usuario";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
+                String usuario = resultSet.getString("Usuario");
+                String clave = resultSet.getString("Clave");
+
+                model.addRow(new Object[]{ID, usuario, clave});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	
+	
+}
+
+
 }

@@ -93,14 +93,14 @@ public class VentanaProducto extends JDialog {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-	    table_1 = new JTable(); // Asigna el valor a la variable de instancia
+	    table_1 = new JTable(); 
 	    table_1.addMouseListener(new MouseAdapter() {
 	    	@Override
 	    	public void mouseClicked(java.awt.event.MouseEvent evt) {
 	    		
 	    	    int filaSeleccionada = table_1.rowAtPoint(evt.getPoint());
 	    	    
-	    	    // Obtener los valores de la fila seleccionada y mostrarlos en los campos de texto
+	    	    
 	    	    productosid.setText(table_1.getValueAt(filaSeleccionada, 0).toString());
 	    	    textField_Medida.setText(table_1.getValueAt(filaSeleccionada, 1).toString());
 	    	    textField_Nombre.setText(table_1.getValueAt(filaSeleccionada, 2).toString());
@@ -211,7 +211,7 @@ public class VentanaProducto extends JDialog {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBackground(new Color(255, 175, 0));
-		btnNewButton_1.setBounds(25, 262, 165, 29);
+		btnNewButton_1.setBounds(234, 262, 165, 29);
 		getContentPane().add(btnNewButton_1);
 		
 		
@@ -268,7 +268,7 @@ public class VentanaProducto extends JDialog {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(new Color(255, 175, 0));
-		btnNewButton_2.setBounds(470, 262, 165, 29);
+		btnNewButton_2.setBounds(449, 261, 165, 29);
 		getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Editar Producto");
@@ -284,7 +284,7 @@ public class VentanaProducto extends JDialog {
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.setBackground(new Color(255, 175, 0));
-		btnNewButton_3.setBounds(877, 262, 165, 29);
+		btnNewButton_3.setBounds(673, 261, 165, 29);
 		getContentPane().add(btnNewButton_3);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Producto_id");

@@ -40,7 +40,7 @@ public class VentanaCuadreCaja extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
-		setBounds(473, 230, 1082, 585);
+		setBounds(500, 255, 1082, 585);
 		getContentPane().setLayout(null);
 				
 		JPanel panelContenedor3 = new JPanel();

@@ -124,37 +124,47 @@ public class CUsuario implements CrudMetodos{
 		// TODO Auto-generated method stub
 		String query = "DELETE FROM Usuario WHERE ID = ?";
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, ID);
+	    try {
+	        PreparedStatement preparedStatement = connection.prepareStatement(query);
+	        preparedStatement.setInt(1, this.ID); // Make sure "this.ID" refers to the ID of the user
 
-            preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
-           
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro, error: " + e.toString());
-        }
-        actualizarTabla();
+	        int result = preparedStatement.executeUpdate();
+	        if (result > 0) {
+	            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente.");
+	            actualizarTabla();
+	        } else {
+	            JOptionPane.showMessageDialog(null, "No se pudo encontrar el usuario para eliminar.");
+	        }
+	    } catch (SQLException e) {
+	        JOptionPane.showMessageDialog(null, "No se pudo eliminar el usuario, error: " + e.toString());
+	    }
 	}
+	
+	
 
 	@Override
 	public void editar() {
 		// TODO Auto-generated method stub
 		String query = "UPDATE Usuario SET Usuario=?, Clave=? WHERE ID=?";
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, Usuario);
-            preparedStatement.setString(2, Clave);
-            preparedStatement.setInt(3, ID);
+	    try {
+	        PreparedStatement preparedStatement = connection.prepareStatement(query);
+	        preparedStatement.setString(1, Usuario);
+	        preparedStatement.setString(2, Clave);
+	        preparedStatement.setInt(3, ID);
 
-            preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro actualizado correctamente.");
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar el registro, error: " + e.toString());
-        }
-        actualizarTabla();
+	        int result = preparedStatement.executeUpdate();
+	        if (result > 0) {
+	            JOptionPane.showMessageDialog(null, "Registro actualizado correctamente.");
+	            
+	        } else {
+	            JOptionPane.showMessageDialog(null, "No se pudo encontrar el registro para editar.");
+	        }
+
+	    } catch (SQLException e) {
+	        JOptionPane.showMessageDialog(null, "No se pudo actualizar el registro, error: " + e.toString());
+	    }
+	    actualizarTabla();
 	}
 
 	@Override

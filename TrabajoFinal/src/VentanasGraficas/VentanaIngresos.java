@@ -45,7 +45,7 @@ public class VentanaIngresos extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
-		setBounds(473, 250, 1082, 585);
+		setBounds(500, 255, 1082, 585);
 		getContentPane().setLayout(null);
 		
 		JPanel panelContenedor1 = new JPanel();

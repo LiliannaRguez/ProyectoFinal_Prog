@@ -11,15 +11,16 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import javax.swing.JTextPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 @SuppressWarnings("serial")
 public class VentanaInicio extends JDialog {
 
 	//private final JPanel contentPanel = new JPanel(); 
 	private JTextField textField1;
+	
 
 	/**
 	 * Launch the application.
@@ -85,10 +86,7 @@ public class VentanaInicio extends JDialog {
 		
 		JButton Button2 = new JButton("Empleados");
 		Button2.setIcon(new ImageIcon(VentanaInicio.class.getResource("/img/person48.png")));
-		Button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		Button2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Button2.setHorizontalAlignment(SwingConstants.LEFT);
 		
@@ -159,4 +157,8 @@ public class VentanaInicio extends JDialog {
 		
 	
 	}
+
+	
+
+
 }

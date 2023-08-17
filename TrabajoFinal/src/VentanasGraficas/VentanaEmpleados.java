@@ -18,7 +18,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.EventQueue;
-import Funcionalidad.CrudMetodos;
 import conexion.mysqlConexion;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
@@ -27,22 +26,28 @@ import Funcionalidad.CEmpleados;
 import Funcionalidad.CUsuario;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
 public class VentanaEmpleados extends JDialog {
 	private JTextField textField1;
-	private JTextField textField3;
-	private JTextField textField4;
-	private JTextField textField5;
-	private JTextField textField6;
-	private JTextField textField;
-	private JTextField textField7;
-	private JTextField textField_1;
+	private JTextField textCorreo;
+	private JTextField textTele;
+	private JTextField textRegi;
+	private JTextField textFechaAd;
+	private JTextField textName;
+	private JTextField textSalar;
+	private JTextField textPuesto;
 	private JTextField textField_2;
 	private JTable table;
 	private JComboBox comboBox1;
+	  private CEmpleados empleado;
+	  private DefaultTableModel model;
+		mysqlConexion conexionDB = new mysqlConexion();
+		Connection connection = conexionDB.estableceConexion();
 	
 
 	/**
@@ -114,11 +119,11 @@ public class VentanaEmpleados extends JDialog {
 		Label3.setBounds(10, 21, 58, 13);
 		panel1.add(Label3);
 		
-		textField = new JTextField();
-		textField.setBackground(SystemColor.controlHighlight);
-		textField.setColumns(10);
-		textField.setBounds(67, 19, 210, 19);
-		panel1.add(textField);
+		textName = new JTextField();
+		textName.setBackground(SystemColor.controlHighlight);
+		textName.setColumns(10);
+		textName.setBounds(67, 19, 210, 19);
+		panel1.add(textName);
 		
 		JLabel Label4 = new JLabel("Correo :");
 		Label4.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -126,11 +131,11 @@ public class VentanaEmpleados extends JDialog {
 		Label4.setBounds(302, 21, 58, 13);
 		panel1.add(Label4);
 		
-		textField3 = new JTextField();
-		textField3.setBackground(SystemColor.controlHighlight);
-		textField3.setBounds(357, 19, 210, 19);
-		panel1.add(textField3);
-		textField3.setColumns(10);
+		textCorreo = new JTextField();
+		textCorreo.setBackground(SystemColor.controlHighlight);
+		textCorreo.setBounds(357, 19, 210, 19);
+		panel1.add(textCorreo);
+		textCorreo.setColumns(10);
 		
 		JLabel Label5 = new JLabel("Teléfono :");
 		Label5.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -138,11 +143,11 @@ public class VentanaEmpleados extends JDialog {
 		Label5.setBounds(590, 21, 70, 13);
 		panel1.add(Label5);
 		
-		textField4 = new JTextField();
-		textField4.setBackground(SystemColor.controlHighlight);
-		textField4.setBounds(653, 19, 210, 19);
-		panel1.add(textField4);
-		textField4.setColumns(10);
+		textTele = new JTextField();
+		textTele.setBackground(SystemColor.controlHighlight);
+		textTele.setBounds(653, 19, 210, 19);
+		panel1.add(textTele);
+		textTele.setColumns(10);
 		
 		JLabel Label6 = new JLabel("Número de Registro :");
 		Label6.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -150,11 +155,11 @@ public class VentanaEmpleados extends JDialog {
 		Label6.setBounds(10, 54, 128, 24);
 		panel1.add(Label6);
 		
-		textField5 = new JTextField();
-		textField5.setBackground(SystemColor.controlHighlight);
-		textField5.setBounds(137, 58, 128, 19);
-		panel1.add(textField5);
-		textField5.setColumns(10);
+		textRegi = new JTextField();
+		textRegi.setBackground(SystemColor.controlHighlight);
+		textRegi.setBounds(137, 58, 128, 19);
+		panel1.add(textRegi);
+		textRegi.setColumns(10);
 		
 		JLabel Label7 = new JLabel("Fecha de Admisión :");
 		Label7.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -162,18 +167,18 @@ public class VentanaEmpleados extends JDialog {
 		Label7.setBounds(302, 60, 134, 13);
 		panel1.add(Label7);
 		
-		textField6 = new JTextField();
-		textField6.setBackground(SystemColor.controlHighlight);
-		textField6.setHorizontalAlignment(SwingConstants.LEFT);
-		textField6.setBounds(423, 58, 210, 19);
-		panel1.add(textField6);
-		textField6.setColumns(10);
+		textFechaAd = new JTextField();
+		textFechaAd.setBackground(SystemColor.controlHighlight);
+		textFechaAd.setHorizontalAlignment(SwingConstants.LEFT);
+		textFechaAd.setBounds(423, 58, 210, 19);
+		panel1.add(textFechaAd);
+		textFechaAd.setColumns(10);
 		
-		textField7 = new JTextField();
-		textField7.setBackground(SystemColor.controlHighlight);
-		textField7.setBounds(732, 58, 168, 19);
-		panel1.add(textField7);
-		textField7.setColumns(10);
+		textSalar = new JTextField();
+		textSalar.setBackground(SystemColor.controlHighlight);
+		textSalar.setBounds(732, 58, 168, 19);
+		panel1.add(textSalar);
+		textSalar.setColumns(10);
 		
 		JLabel Label9 = new JLabel("Puesto :");
 		Label9.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -181,12 +186,12 @@ public class VentanaEmpleados extends JDialog {
 		Label9.setBounds(10, 102, 58, 13);
 		panel1.add(Label9);
 		
-		textField_1 = new JTextField();
-		textField_1.setBackground(SystemColor.controlHighlight);
-		textField_1.setText("");
-		textField_1.setBounds(61, 100, 216, 19);
-		panel1.add(textField_1);
-		textField_1.setColumns(10);
+		textPuesto = new JTextField();
+		textPuesto.setBackground(SystemColor.controlHighlight);
+		textPuesto.setText("");
+		textPuesto.setBounds(61, 100, 216, 19);
+		panel1.add(textPuesto);
+		textPuesto.setColumns(10);
 		
 		JLabel Label10 = new JLabel("Turno :");
 		Label10.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -196,7 +201,7 @@ public class VentanaEmpleados extends JDialog {
 		panel1.add(Label10);
 		
 		@SuppressWarnings("rawtypes")
-		JComboBox comboBox1 = new JComboBox();
+		 JComboBox  comboBox1= new JComboBox();
 		comboBox1.setBackground(SystemColor.controlHighlight);
 		comboBox1.setBounds(347, 99, 166, 21);
 		panel1.add(comboBox1);
@@ -247,39 +252,92 @@ public class VentanaEmpleados extends JDialog {
 		Button4.setBounds(683, 290, 165, 29);
 		getContentPane().add(Button4);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 353, 1016, 396);
+		
+		/*model = new DefaultTableModel();
+        table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Correo");
+        model.addColumn("Telefono");
+        
+        model.addColumn("Fecha de Admision");
+        model.addColumn("Salario");
+        model.addColumn("Puesto");
+        model.addColumn("Turno");
+        model.addColumn("Horario");
+
+        
+		scrollPane.setBounds(25, 355, 1016, 373);
 		getContentPane().add(scrollPane);
+		table.setModel(model);*/
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-					"Nombre", "Correo", "Teléfono", "Número de Registro", "Fecha de Admisión", "Salario", "Puesto", "Turno", "Horario"
-			}
-		));
-		
+		model = new DefaultTableModel();
+		table = new JTable(model);
+		table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+
+        			    int filaSeleccionada = table.rowAtPoint(e.getPoint());
+
+        			    textRegi.setText(table.getValueAt(filaSeleccionada, 3).toString());
+        			    textName.setText(table.getValueAt(filaSeleccionada, 0).toString());
+        			    textCorreo.setText(table.getValueAt(filaSeleccionada, 1).toString());
+        			    textTele.setText(table.getValueAt(filaSeleccionada, 2).toString());
+        			    textFechaAd.setText(table.getValueAt(filaSeleccionada, 4).toString());
+        			    textSalar.setText(table.getValueAt(filaSeleccionada, 5).toString());
+        			    textPuesto.setText(table.getValueAt(filaSeleccionada, 6).toString());
+        			    String valorCombo = table.getValueAt(filaSeleccionada, 7).toString();
+        			    comboBox1.setSelectedItem(valorCombo);
+        			    textField_2.setText(table.getValueAt(filaSeleccionada, 8).toString());
+        			    
+        			  
+        				
+        			}
+        		}); 
+		JScrollPane scrollPane = new JScrollPane(table);
+
+		model.addColumn("ID");
+		model.addColumn("Nombre");
+		model.addColumn("Correo");
+		model.addColumn("Telefono");
+		model.addColumn("Fecha de Admision");
+		model.addColumn("Salario");
+		model.addColumn("Puesto");
+		model.addColumn("Turno");
+		model.addColumn("Horario");
+
+		scrollPane.setBounds(25, 355, 1016, 373);
+		getContentPane().add(scrollPane);
+
+		cargarDatosDesdeBaseDeDatos();
+
 		Button2.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	
-	        	String Nombre = textField.getText();
-		        String Correo = textField3.getText();
-		        String telefono = textField4.getText();
-		        int ID = Integer.parseInt(textField5.getText());
-		        String fecha_Admision = textField6.getText();
-		        int Salario = Integer.parseInt(textField7.getText());
-		        String Puesto = textField_1.getText();
-		        String Turno = comboBox1.getSelectedItem().toString();
-		        String Horario = textField_2.getText();
+	        	/*int ID =Integer.parseInt(textField2.getText());
+		    	String usuario = textField3.getText();
+		        String clave = new String(passwordField.getPassword());
 		        
 		        
-	            CEmpleados empleado = new CEmpleados(Nombre, Correo, telefono,ID, fecha_Admision, Salario, Puesto, Turno, Horario, table);
-	            empleado.guardar();
-	            empleado.actualizarTabla();
+		        CUsuario nuevoUsuario = new CUsuario(ID, usuario, clave,table);
+		        nuevoUsuario.guardar();
+		       nuevoUsuario.actualizarTabla();*/
+	        	
+	        	int ID = Integer.parseInt(textRegi.getText());
+	        	String Nombre = textName.getText();
+                String Correo = textCorreo.getText();
+                String telefono = textTele.getText();
+                String fecha_Admision = textFechaAd.getText();
+                int Salario = Integer.parseInt(textSalar.getText());
+                String Puesto = textPuesto.getText();
+                String Turno = comboBox1.getSelectedItem().toString();
+                String Horario = textField_2.getText();
 
-	            //empleado.cargarDatosDesdeBaseDeDatos(); 
+                CEmpleados nuevoEmpleado = new CEmpleados ( ID,Nombre, Correo, telefono, fecha_Admision, Salario, Puesto, Turno, Horario, table);
+                nuevoEmpleado.guardar();
+                nuevoEmpleado.actualizarTabla();
+                
 	            
 	         
 	        }
@@ -288,11 +346,37 @@ public class VentanaEmpleados extends JDialog {
 		Button3.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	
-	        	int ID = Integer.parseInt(textField5.getText());
-	        	CEmpleados empleadoAEliminar = new CEmpleados( table);
-	        	empleadoAEliminar.setID(ID);
-	        	empleadoAEliminar.eliminar();
-	        	empleadoAEliminar.actualizarTabla();
+	        	/*public void actionPerformed(ActionEvent e) {
+		            int selectedRow = table.getSelectedRow();
+		            if (selectedRow == -1) {
+		                JOptionPane.showMessageDialog(null, "Selecciona un usuario de la tabla para eliminar.");
+		                return;
+		            }
+
+		            int ID = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+		            System.out.println("ID to delete: " + ID);
+
+		            CUsuario usuarioAEliminar = new CUsuario(ID, "", "", table);
+		            usuarioAEliminar.eliminar();
+		            usuarioAEliminar.actualizarTabla();
+		        }*/
+	        	
+	        	int selectedRow = table.getSelectedRow();
+	            if (selectedRow == -1) {
+	                JOptionPane.showMessageDialog(null, "Selecciona un Empleado de la tabla para eliminar.");
+	                return;
+	            }
+	            
+	            int ID = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+	            System.out.println("ID to delete: " + ID);
+	            
+	            CEmpleados empleado = new CEmpleados(table);
+	            empleado.setID(ID);
+	            empleado.eliminar();
+	            empleado.actualizarTabla();
+	            cargarDatosDesdeBaseDeDatos();	            //JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+	        
+                
 	    
 	        }
 	    });
@@ -300,23 +384,86 @@ public class VentanaEmpleados extends JDialog {
 		Button4.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	
-	        	int ID = Integer.parseInt(textField5.getText());
+	        	/*int ID = Integer.parseInt(textField2.getText());
+		        String usuario = textField3.getText();
+		        String clave = new String(passwordField.getPassword());
+		       
+		        CUsuario usuarioAEditar = new CUsuario(ID, usuario, clave, table);
+		        usuarioAEditar.editar();
+		       
+		    }*/
 	        	
-	        	String Nombre = textField.getText();
-		        String Correo = textField3.getText();
-		        String telefono = textField4.getText();
-		        String fecha_Admision = textField6.getText();
-		        int Salario = Integer.parseInt(textField7.getText());
-		        String Puesto = textField_1.getText();
-		        String Turno = comboBox1.getSelectedItem().toString();
-		        String Horario = textField_2.getText();
-	        	
-	            CEmpleados empleadoAEditar = new CEmpleados (Nombre, Correo, telefono,ID, fecha_Admision, Salario, Puesto, Turno, Horario, table);
-	            empleadoAEditar.editar();
-	            empleadoAEditar.actualizarTabla();
+	        	/*int selectedRow = table.getSelectedRow();
+	            if (selectedRow == -1) {
+	                JOptionPane.showMessageDialog(null, "Selecciona un Empleado de la tabla para editar.");
+	                return;
+	            }*/
 	            
-	        }
+	            int ID = Integer.parseInt(textRegi.getText());
+	            String Nombre = textName.getText();
+	            String Correo = textCorreo.getText();
+	            String telefono = textTele.getText();
+	            String fecha_Admision = textFechaAd.getText();
+	            int Salario = Integer.parseInt(textSalar.getText());
+	            String Puesto = textPuesto.getText();
+	            String Turno = comboBox1.getSelectedItem().toString();
+	            String Horario = textField_2.getText();
+
+	            CEmpleados empleado = new CEmpleados(ID, Nombre, Correo, telefono, fecha_Admision, Salario, Puesto, Turno, Horario, table);
+	            empleado.editar();
+	            empleado.actualizarTabla();
+	            cargarDatosDesdeBaseDeDatos();	            //empleado.actualizarTabla();
+	            //JOptionPane.showMessageDialog(null, "Registro actualizado correctamente.");
+	        
+            }
+
 	    });
 		
 	}
+	
+	
+        
+	private void cargarDatosDesdeBaseDeDatos() {
+		/*String query = "SELECT ID, Usuario, Clave FROM Usuario";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
+                String usuario = resultSet.getString("Usuario");
+                String clave = resultSet.getString("Clave");
+
+                model.addRow(new Object[]{ID, usuario, clave});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+		//System.out.println("Cargando datos desde la base de datos...");
+
+	    String query = "SELECT ID, Nombre, Correo, telefono, fecha_Admision, Salario, Puesto, Turno, Horario FROM Empleado";
+
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+	             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+	            while (resultSet.next()) {
+	        	int ID = resultSet.getInt("ID");
+	        	String Nombre = resultSet.getString("Nombre");
+	            String Correo = resultSet.getString("Correo");
+	            String telefono = resultSet.getString("telefono");
+	            String fecha_Admision = resultSet.getString("fecha_Admision");
+	            int Salario = resultSet.getInt("Salario");
+	            String Puesto = resultSet.getString("Puesto");
+	            String Turno = resultSet.getString("Turno");
+	            String Horario = resultSet.getString("Horario");
+
+	            //System.out.println("ID: " + ID + "Nombre: " + Nombre + ", Correo: " + Correo + ", Teléfono: " + telefono + ", Fecha Admision: " + fecha_Admision +",Salario : "+ Salario + ", Puesto : "+ Puesto + ", Turno : " + Turno + ",Horario : " + Horario);
+
+	            model.addRow(new Object[]{ID, Nombre, Correo, telefono, fecha_Admision, Salario, Puesto, Turno, Horario});
+	        }//table.setModel(model);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
