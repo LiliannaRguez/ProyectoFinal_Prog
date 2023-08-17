@@ -4,6 +4,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JSplitPane;
@@ -416,5 +418,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 	}
+
+
 
 }

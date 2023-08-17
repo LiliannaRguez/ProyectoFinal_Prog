@@ -2,10 +2,10 @@ package Funcionalidad;
 
 public interface CrudMetodos {
 	
-	public void insertar();
-	public void actualizar();
-	public void modificar();
-	public void borrar();
-	public void cargarDatosDesdeBaseDeDatos();
+	public void guardar ();
+	public void eliminar ();
+	public void editar ();
+	public void actualizarTabla();
+	
 
 }

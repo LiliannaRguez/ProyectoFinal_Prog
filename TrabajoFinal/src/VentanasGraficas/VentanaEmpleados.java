@@ -1,6 +1,7 @@
 package VentanasGraficas;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -9,11 +10,22 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.SystemColor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.EventQueue;
+import Funcionalidad.CrudMetodos;
+import conexion.mysqlConexion;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import Funcionalidad.CEmpleados;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
@@ -23,11 +35,18 @@ public class VentanaEmpleados extends JDialog {
 	private JTextField textField4;
 	private JTextField textField5;
 	private JTextField textField6;
-	private JTable table;
 	private JTextField textField;
 	private JTextField textField7;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTable table;
+	private JComboBox comboBox1;
+	
+	
+	
+	
+	//mysqlConexion conexionDB = new mysqlConexion();
+	//Connection connection = conexionDB.estableceConexion();
 
 	/**
 	 * Launch the application.
@@ -50,7 +69,7 @@ public class VentanaEmpleados extends JDialog {
 	 */
 	public VentanaEmpleados() {
 		
-		setUndecorated(true);
+		//setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setEnabled(false);
@@ -153,12 +172,6 @@ public class VentanaEmpleados extends JDialog {
 		panel1.add(textField6);
 		textField6.setColumns(10);
 		
-		JLabel Label8 = new JLabel("Nivel de Acceso :");
-		Label8.setHorizontalAlignment(SwingConstants.LEFT);
-		Label8.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Label8.setBounds(824, 102, 107, 13);
-		panel1.add(Label8);
-		
 		textField7 = new JTextField();
 		textField7.setBackground(SystemColor.controlHighlight);
 		textField7.setBounds(732, 58, 168, 19);
@@ -191,6 +204,13 @@ public class VentanaEmpleados extends JDialog {
 		comboBox1.setBounds(347, 99, 166, 21);
 		panel1.add(comboBox1);
 		
+		DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+		comboBoxModel.addElement("Matutino");
+		comboBoxModel.addElement("Vespertino");
+		comboBoxModel.addElement("Nocturno");
+		
+		comboBox1.setModel(comboBoxModel);
+		
 		JLabel Label11 = new JLabel("Horario :");
 		Label11.setHorizontalAlignment(SwingConstants.LEFT);
 		Label11.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -202,12 +222,6 @@ public class VentanaEmpleados extends JDialog {
 		textField_2.setBounds(590, 100, 210, 19);
 		panel1.add(textField_2);
 		textField_2.setColumns(10);
-		
-		@SuppressWarnings("rawtypes")
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(SystemColor.controlHighlight);
-		comboBox.setBounds(930, 99, 76, 21);
-		panel1.add(comboBox);
 		
 		JLabel Label12 = new JLabel("Salario :");
 		Label12.setHorizontalAlignment(SwingConstants.LEFT);
@@ -246,9 +260,64 @@ public class VentanaEmpleados extends JDialog {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Correo", "Tel\u00E9fono ", "N\u00FAmero de Registro", "Fecha de Admisi\u00F3n ", "Salario", "Puesto", "Turno", "Horario", "Nivel de Acceso"
+					"Nombre", "Correo", "Teléfono", "Número de Registro", "Fecha de Admisión", "Salario", "Puesto", "Turno", "Horario"
 			}
 		));
+		
+		
+		
+		Button2.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        String Nombre = textField.getText();
+		        String Correo = textField3.getText();
+		        String telefono = textField4.getText();
+		        int Empleado_id = Integer.parseInt(textField5.getText());
+		        String fecha_admision = textField6.getText();
+		        int Salario = Integer.parseInt(textField7.getText());
+		        String Nomb_puesto = textField_1.getText();
+		        String Tipo = comboBox1.getSelectedItem().toString();
+		        String Horario = textField_2.getText();
 
-	}
+		        CEmpleados empleado = new CEmpleados();
+		        empleado.guardar(Nombre, Correo, telefono, Empleado_id, fecha_admision, Salario, Nomb_puesto, Tipo, Horario);
+		    }
+		});
+		
+		Button3.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+	        int selectedRow = table.getSelectedRow();
+	        if (selectedRow != -1) {
+	            int Empleado_id = (int) table.getValueAt(selectedRow, 3); 
+	            CEmpleados empleado = new CEmpleados(Empleado_id);
+	            empleado.eliminar();
+	        } else {
+	            JOptionPane.showMessageDialog(VentanaEmpleados.this, "Selecciona un empleado para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
+	});
+	
+		Button4.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	    	int selectedRow = table.getSelectedRow();
+	        if (selectedRow != -1) {
+	            /*String nuevoNombre = textField.getText();
+	            String nuevoCorreo = textField3.getText();
+	            String nuevoTelefono = textField4.getText();
+	            int nuevoSalario = Integer.parseInt(textField7.getText());
+	            String nuevoNombPuesto = textField_1.getText();
+	            String nuevoTipo = comboBox1.getSelectedItem().toString();
+	            String nuevoHorario = textField_2.getText();*/
+	            
+	            int Empleado_id = (int) table.getValueAt(selectedRow, 3);
+	            CEmpleados empleado = new CEmpleados(Empleado_id);
+	            empleado.editar();
+	        } else {
+	            JOptionPane.showMessageDialog(VentanaEmpleados.this, "Selecciona un empleado para editar.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
+	});
+		
+
+
+    }
 }

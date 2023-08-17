@@ -8,20 +8,36 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import Funcionalidad.CrudMetodos;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import Funcionalidad.CEmpleados;
+import Funcionalidad.CUsuario;
+import conexion.mysqlConexion;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.EventQueue;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class VentanaUsuario extends JDialog {
 	private JTextField textField1;
 	private JTextField textField2;
 	private JTextField textField3;
-	private JTextField textField4;
-	private JTextField textField5;
 	private JTable table;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	//mysqlConexion conexionDB = new mysqlConexion();
+	//Connection connection = conexionDB.estableceConexion();
+	
 
 	/**
 	 * Launch the application.
@@ -30,7 +46,7 @@ public class VentanaUsuario extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaUsuaio frame = new VentanaUsuaio();
+					VentanaUsuario frame = new VentanaUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +60,7 @@ public class VentanaUsuario extends JDialog {
 	 */
 	public VentanaUsuario() {
 		
-		setUndecorated(true);
+		//setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().setBackground(new Color(255, 255, 255));
 		getContentPane().setForeground(SystemColor.menu);
@@ -84,11 +100,11 @@ public class VentanaUsuario extends JDialog {
 		
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(new Color(240, 222, 173));
-		panel1.setBounds(25, 115, 1016, 119);
+		panel1.setBounds(25, 115, 1016, 100);
 		getContentPane().add(panel1);
 		panel1.setLayout(null);
 		
-		JLabel Label3 = new JLabel("Nombre :");
+		JLabel Label3 = new JLabel("ID :");
 		Label3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Label3.setHorizontalAlignment(SwingConstants.LEFT);
 		Label3.setBounds(10, 21, 58, 13);
@@ -118,59 +134,43 @@ public class VentanaUsuario extends JDialog {
 		Label5.setBounds(603, 21, 70, 13);
 		panel1.add(Label5);
 		
-		textField4 = new JTextField();
-		textField4.setBackground(SystemColor.controlHighlight);
-		textField4.setBounds(653, 19, 210, 19);
-		panel1.add(textField4);
-		textField4.setColumns(10);
+		JLabel lblNewLabel = new JLabel("Tipo :");
+		lblNewLabel.setBounds(10, 66, 45, 13);
+		panel1.add(lblNewLabel);
 		
-		JLabel Label6 = new JLabel("Nivel de Acceso :");
-		Label6.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Label6.setHorizontalAlignment(SwingConstants.LEFT);
-		Label6.setBounds(10, 69, 128, 24);
-		panel1.add(Label6);
+		textField = new JTextField();
+		textField.setBackground(SystemColor.controlHighlight);
+		textField.setBounds(70, 63, 210, 19);
+		panel1.add(textField);
+		textField.setColumns(10);
 		
-		textField5 = new JTextField();
-		textField5.setBackground(SystemColor.controlHighlight);
-		textField5.setBounds(123, 73, 210, 19);
-		panel1.add(textField5);
-		textField5.setColumns(10);
-	
-		textField3 = new JTextField();
-		textField3.setBackground(SystemColor.controlHighlight);
-		textField3.setBounds(358, 19, 210, 19);
-		panel1.add(textField3);
-		textField3.setColumns(10);
-		
-		textField4 = new JTextField();
-		textField4.setBackground(SystemColor.controlHighlight);
-		textField4.setBounds(654, 19, 209, 19);
-		panel1.add(textField4);
-		textField4.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(648, 19, 178, 19);
+		panel1.add(passwordField);
 		
 		JButton Button2 = new JButton("Guardar Usuario");
 		Button2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Button2.setForeground(Color.WHITE);
 		Button2.setBackground(new Color(255, 175, 0));
-		Button2.setBounds(246, 279, 165, 29);
+		Button2.setBounds(252, 242, 165, 29);
 		getContentPane().add(Button2);
 		
 		JButton Button3 = new JButton("Eliminar Usuario");
 		Button3.setForeground(Color.WHITE);
 		Button3.setBackground(new Color(255, 175, 0));
 		Button3.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button3.setBounds(462, 279, 165, 29);
+		Button3.setBounds(449, 242, 165, 29);
 		getContentPane().add(Button3);
 		
 		JButton Button4 = new JButton("Editar Usuario");
 		Button4.setForeground(Color.WHITE);
 		Button4.setBackground(new Color(255, 175, 0));
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		Button4.setBounds(673, 279, 165, 29);
+		Button4.setBounds(648, 242, 165, 29);
 		getContentPane().add(Button4);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 353, 1016, 396);
+		scrollPane.setBounds(25, 306, 1016, 437);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -179,18 +179,46 @@ public class VentanaUsuario extends JDialog {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Usuario", "Clave ", "Nivel de Acceso"
+				"ID", "Usuario", "Clave "
 			}
 		));
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre", "Correo", "Tel\u00E9fono ", "N\u00FAmero de Registro", "Fecha de Admisi\u00F3n "
-			}
-		));
+		
+        
+		
+		Button2.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	int Usuario_id = Integer.parseInt(textField2.getText());
+		        String Usuario = textField3.getText();
+		        String Clave = passwordField.getText();
+		        String Tipo = textField.getText();
 
+		        //int id = Integer.parseInt(Usuario_id);
+
+		        CUsuario nuevoUsuario = new CUsuario(Usuario_id, Usuario, Clave, Tipo);
+		        nuevoUsuario.guardar();
+		        
+		        
+		    }
+		});
+
+		Button3.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        CUsuario usuario = new CUsuario();
+		        usuario.eliminar();
+		        
+		       
+		    }
+		});
+
+		Button4.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        CUsuario usuario = new CUsuario();
+		        usuario.editar();
+		       
+		        
+		    }
+		});
+		
 	}
 }
