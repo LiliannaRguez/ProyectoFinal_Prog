@@ -11,9 +11,9 @@ public class mysqlConexion {
 	Connection conectar = null;
 	
 	String usuario = "root";
-	String contrasenia = "00000000";
+	String contrasenia = "";
 	String bd = "tf_restaurante";
-	String ip = "127.0.0.1";
+	String ip = "localhost";
 	String puerto = "3306";
 	
 	String cadena = "jdbc:mysql://"+ip+":"+puerto+"/"+bd;
